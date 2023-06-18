@@ -10,6 +10,11 @@ flask-migrate = "*"
 sqlalchemy-serializer = "*"
 flask-restful = "*"
 flask-cors = "*"
+datetime = "*"
+bcrypt = "*"
+cors = "*"
+faker = "*"
+switch = "*"
 
 [dev-packages]
 

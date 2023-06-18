@@ -4,17 +4,15 @@ from datetime import datetime
 from flask_bcrypt import bcrypt
 
 
-class User(db.model, SerializerMixin):
+class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
-    id = db.Column(db.integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     username = db.Column(db.String(255))
     password = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime)
-    #current_neighborhood_id
-    #monster_name = db.Column(db.String(255))
     
     def set_password(self, password):
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
@@ -33,32 +31,38 @@ class User(db.model, SerializerMixin):
         'updated_at': self.updated_at,
      }
 
-class Neighborhood(db.model, SerializerMixin):
-   __tablename__ = 'neighborhoods'
-   id = db.Column(db.integer, primary_key=True)
+class Block(db.Model, SerializerMixin):
+   __tablename__ = 'blocks'
+   id = db.Column(db.Integer, primary_key=True)
+   name = db.Column(db.String(255))
    notes = db.Column(db.String(255))
    #favorited = db.Column(db.Boolean)
 
    def to_dict(self):
     return {
        'id': self.id,
+       'name': self.name,
+       'notes': self.notes,
+       #'favorited': self.favorited,
        'notes': self.notes
     }
 
-class Games(db.model, SerializerMixin):
+class Game(db.Model, SerializerMixin):
    __tablename__ = 'games'
-   id = db.Column(db.integer, primary_key=True)
+   id = db.Column(db.Integer, primary_key=True)
+   name = db.Column(db.String(255))
    notes = db.Column(db.String(512))
 
    def to_dict(self):
     return {
        'id': self.id,
+       'name': self.name,
        'notes': self.notes
     }
 
-class Games2Users(db.model, SerializerMixin):
-   __tablename__ = 'games2users'
-   id = db.Column(db.integer, primary_key=True)
+class User_Game(db.Model, SerializerMixin):
+   __tablename__ = 'user_games'
+   id = db.Column(db.Integer, primary_key=True)
    game_id = db.Column(db.Integer,  db.ForeignKey('games.id'), nullable=False)
    user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
    completed_on = db.Column(db.DateTime)
@@ -71,23 +75,29 @@ class Games2Users(db.model, SerializerMixin):
        'completed_on':self.completed_on,
     }   
    
-class Locations(db.model, SerializerMixin):
+class Location(db.Model, SerializerMixin):
    __tablename__ = 'locations'
-   id = db.Column(db.integer, primary_key=True)
-   neighborhood_id = db.Column(db.Integer,  db.ForeignKey('neighborhoods.id'), nullable=False)
+   id = db.Column(db.Integer, primary_key=True)
+   name = db.Column(db.String(255))
+   block_id = db.Column(db.Integer,  db.ForeignKey('blocks.id'), nullable=False)
    is_business = db.Column(db.Boolean)
    notes = db.Column(db.String(512))
 
    def to_dict(self):
     return {
        'id': self.id,
-       'neighborhood_id': self.neighborhood_id,
+       'name': self.name,
+       'block_id':self.block_id,
+       'is_business':self.is_business,
+       'notes':self.notes,
+       'block_id': self.block_id,
        'is_business':self.is_business,
        'notes':self.notes,
     } 
 
-class Locations2Users(db.model, SerializerMixin):
-   __tablename__ = 'locations2users'
+class User_Location(db.Model, SerializerMixin):
+   __tablename__ = 'user_locations'
+   id = db.Column(db.Integer, primary_key=True)
    user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
    location_id = db.Column(db.Integer,  db.ForeignKey('locations.id'), nullable=False)
    is_tricked = db.Column(db.Boolean)
