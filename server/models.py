@@ -60,7 +60,7 @@ class Game(db.Model, SerializerMixin):
        'notes': self.notes
     }
 
-class User_Game(db.Model, SerializerMixin):
+class UserGame(db.Model, SerializerMixin):
    __tablename__ = 'user_games'
    id = db.Column(db.Integer, primary_key=True)
    game_id = db.Column(db.Integer,  db.ForeignKey('games.id'), nullable=False)
@@ -70,7 +70,7 @@ class User_Game(db.Model, SerializerMixin):
    def to_dict(self):
     return {
        'id': self.id,
-       'game_id': self.notes,
+       'game_id': self.game_id,
        'user_id':self.user_id,
        'completed_on':self.completed_on,
     }   
@@ -95,7 +95,7 @@ class Location(db.Model, SerializerMixin):
        'notes':self.notes,
     } 
 
-class User_Location(db.Model, SerializerMixin):
+class UserLocation(db.Model, SerializerMixin):
    __tablename__ = 'user_locations'
    id = db.Column(db.Integer, primary_key=True)
    user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)

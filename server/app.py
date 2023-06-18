@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from models import db, User, Block, Game, User_Game, Location, User_Location
+from models import db, User, Block, Game, UserGame, Location, UserLocation
 from config import app, db
 
 
@@ -108,7 +108,7 @@ class Login(Resource):
 class Logout(Resource):
     def post(self):
         if 'user_id' in session:
-            session.pop('user_id', None)  # Remove user ID from the session
+            session.clear()  # Clear the entire session
             return make_response(jsonify({'message': 'Logged out successfully'}), 200)
         else:
             return make_response(jsonify({'message': 'No user logged in'}), 200)
@@ -121,6 +121,26 @@ class CheckLoginStatus(Resource):
         else:
             return {'loggedIn': False}, 200
         
+    
+
+
+class UserGames(Resource):
+    @login_required
+    def get(self, user):
+        user = get_authenticated_user()  # Retrieve the authenticated user
+        user_games = UserGame.query.filter_by(user_id=user.id).all()
+        user_games_data = [ug.to_dict() for ug in user_games]
+        return jsonify(user_games_data)
+
+
+class UserLocations(Resource):
+    @login_required
+    def get(self, user):
+        user = get_authenticated_user()  # Retrieve the authenticated user
+        user_locations = UserLocation.query.filter_by(user_id=user.id).all()
+        user_locations_data = [ul.to_dict() for ul in user_locations]
+        return jsonify(user_locations_data)
+   
 
 
 api.add_resource(Login, '/login')
@@ -128,6 +148,8 @@ api.add_resource(Logout, '/logout')
 api.add_resource(Account, '/account')
 api.add_resource(Signup, '/signup')
 api.add_resource(CheckLoginStatus, '/check-login-status')
+api.add_resource(UserGames, '/user-games')
+api.add_resource(UserLocations, '/user-locations')
 
 
 if __name__ == '__main__':

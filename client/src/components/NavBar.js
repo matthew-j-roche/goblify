@@ -2,8 +2,9 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 
-function NavBar({ loggedIn }) {
+function NavBar({ loggedIn, setLoggedIn }) {
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     if (window.confirm('Are you sure you want to logout?')) {
       try {
@@ -14,6 +15,7 @@ function NavBar({ loggedIn }) {
 
         if (response.ok) {
           window.confirm('Logged out successfully');
+          setLoggedIn(false);
           navigate('/login');
         } else {
           console.error('Logout failed');

@@ -1,20 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-const containerStyles =
-  "bg-gradient-to-r from-green-900 to-teal-200 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8";
-const cardStyles = "max-w-md w-full p-6 bg-white rounded-lg shadow-2xl";
-const titleStyles = "text-2xl font-bold text-center";
-const errorStyles = "text-red-500 text-center border";
-const formStyles = "mt-8 space-y-6";
-const inputStyles =
-  "formInput w-full border-2 border-gray-300 rounded-md mb-4 p-2";
-  const buttonStyles =
-  "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-teal-500 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400";
-
-
-const textStyles = "text-gray-500 m-3";
-
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -62,39 +48,35 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div className={containerStyles}>
-      <div className={cardStyles}>
+    <div className="loginDiv1">
+      <div className="loginDiv2">
         <div>
-          <h1 className={titleStyles}>Login</h1>
-          {error && <p className={errorStyles}>{error}</p>}
+          <h1>Login</h1>
+          {error && <p>{error}</p>}
         </div>
-        <form className={formStyles} onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
+        <form className="loginForm" onSubmit={handleSubmit}>
+          <div className="loginFormDiv1">
             <div>
-              <label htmlFor="username" className="sr-only">
-                Username
-              </label>
+              <label>Username</label>
               <input
                 id="username"
                 name="username"
                 type="text"
                 required
-                className={inputStyles}
+                className="loginFormInput"
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
+              <label>Password</label>
               <input
                 id="password"
                 name="password"
                 type="password"
                 required
-                className={inputStyles}
+                className="loginFormInput"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -102,17 +84,11 @@ function Login({ onLogin }) {
             </div>
           </div>
           <div>
-            <button type="submit" className={buttonStyles}>
-              Sign in
-            </button>
+            <button type="submit" className="loginButton">Sign in</button>
           </div>
         </form>
-        <p className={textStyles}>
-          Don't have an account?{" "}
-        </p>
-          <Link to="/signup" className={buttonStyles}>
-            Sign up
-          </Link>
+        <p>Don't have an account?{" "}</p>
+          <Link to="/signup" className="loginButton">Sign up</Link>
       </div>
     </div>
   );

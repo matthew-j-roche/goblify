@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-const containerStyles =
-  "bg-gradient-to-r from-green-900 to-teal-200 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8";
-const cardStyles = "max-w-md w-full p-6 bg-white rounded-lg shadow-2xl";
-const titleStyles = "text-2xl font-bold text-center mb-6";
-const loadingStyles = "text-center";
-const usernameBoxStyles = "bg-green-800 text-white py-1 px-2 rounded-md";
-const inputStyles = "border-gray-300 focus:ring-green-500 focus:border-green-500 block w-full p-2 rounded-md";
-const buttonStyles = "bg-green-600 text-white py-2 px-4 mt-4 rounded-md m-5";
 
 function Account() {
   const [user, setUser] = useState(null);
@@ -92,14 +84,13 @@ function Account() {
   };
 
   return (
-    <div className={containerStyles}>
-      <div className={cardStyles}>
+    <div className="accountDiv1">
+      <div className="accountDiv2">
         {user ? (
           <div>
-            <h1 className={titleStyles}>
-              <div className={usernameBoxStyles}>{user.username}</div>User Information
+            <h1 className="accounth1">
+              <div className="accountDiv3">{user.username}</div>User Information
             </h1>
-            <p><strong>ID:</strong> {user.id}</p>
             <p><strong>Username:</strong> {user.username}</p>
             <div className="text-center">
               {showNewUsernameInput ? (
@@ -110,12 +101,12 @@ function Account() {
                     id="newUsername"
                     value={newUsername}
                     onChange={handleUsernameChange}
-                    className={`${inputStyles} ${showNewUsernameInput ? 'ring-green-500 ring-2' : ''}`}
+                    className={`${showNewUsernameInput ? 'ring-green-500 ring-2' : ''}`}
                   />
-                  <button className={buttonStyles} onClick={updateUsername}>Update Username</button>
+                  <button className="accountUpdateUsernameButton" onClick={updateUsername}>Update Username</button>
                 </div>
               ) : (
-                <button className={buttonStyles} onClick={() => setShowNewUsernameInput(true)}>Change Username</button>
+                <button className="accountNewUsernameButton" onClick={() => setShowNewUsernameInput(true)}>Change Username</button>
               )}
               {showNewPasswordInput ? (
                 <div>
@@ -125,19 +116,19 @@ function Account() {
                     id="newPassword"
                     value={newPassword}
                     onChange={handlePasswordChange}
-                    className={`${inputStyles} ${showNewPasswordInput ? 'ring-green-500 ring-2' : ''}`}
+                    className={`${showNewPasswordInput ? 'ring-green-500 ring-2' : ''}`}
                   />
-                  <button className={buttonStyles} onClick={updatePassword}>Update Password</button>
+                  <button className="accountUpdatePasswordButton" onClick={updatePassword}>Update Password</button>
                 </div>
               ) : (
-                <button className={buttonStyles} onClick={() => setShowNewPasswordInput(true)}>Change Password</button>
+                <button className="accountNewPasswordButton" onClick={() => setShowNewPasswordInput(true)}>Change Password</button>
               )}
             </div>
-            <p><strong>Email:</strong> {user.email}</p>
+            <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
             <p><strong>Created At:</strong> {user.created_at}</p>
           </div>
         ) : (
-          <p className={loadingStyles}>Loading user information...</p>
+          <p className="accountLoading">Loading user information...</p>
         )}
       </div>
     </div>

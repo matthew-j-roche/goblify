@@ -34,14 +34,14 @@ function App() {
 
   return (
     <Router>
-      <NavBar loggedIn={loggedIn} />
+      <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route path="/" element={loggedIn ? <Home /> : <SplashScreen />} />
         <Route path="/login" element={loggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/account" element={<Account />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={ loggedIn ? ( <Home username={loggedIn.username} /> ) : ( <Navigate to="/login" /> ) } />
         <Route path="/about" element={<About />} />
         <Route path="/error" element={<Error />} /> {/* Render 404 page for all other routes */}
       </Routes>
