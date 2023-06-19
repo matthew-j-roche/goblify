@@ -1,27 +1,17 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import tricksterImage from '../assets/trickster.jpeg';
-import './SplashScreen.css'; // Import CSS file for additional styles
+import React from 'react';
+import dungeonWallImage from '../assets/dungeonWall.png';
+import './SplashScreen.css';
 
 const SplashScreen = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Simulate a delay of 5 seconds
-    const timer = setTimeout(() => {
-      navigate('/login');
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [navigate]);
-
   return (
-    <div className="splash-container">
-      <div className="pulse-animation">
-        <img src={tricksterImage} alt="Trickster" className="pulse-image" />
+    <body className="background" style={{ backgroundImage: 'conic-gradient(#ff5c00, #fc222b, #ff265e, #ff5c00)', dungeonWallImage }}>
+      <div className="splashDiv1">
+        <img src={dungeonWallImage} alt="dungeonWall" className="dungeonWall" />
+        <h1 className="splashText">G o b l i f y</h1>
+        <div className="background" style={{ backgroundmage: {dungeonWallImage} }}>
+        </div>
       </div>
-      <p>Loading...</p>
-    </div>
+    </body>
   );
 };
 

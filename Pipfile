@@ -15,6 +15,7 @@ bcrypt = "*"
 cors = "*"
 faker = "*"
 switch = "*"
+flask-bcrypt = "*"
 
 [dev-packages]
 
