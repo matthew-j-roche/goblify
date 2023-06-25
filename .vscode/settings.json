@@ -1,0 +1,9 @@
+{
+    "workbench.preferredDarkColorTheme": "Abyss",
+    "workbench.preferredHighContrastColorTheme": "Monokai",
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.scrollbar.vertical": "auto",
+    "editor.scrollbar.verticalScrollbarSize": 6,
+    "screencastMode.verticalOffset": 20,
+    "editor.glyphMargin": false
+}

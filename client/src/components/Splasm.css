@@ -30,7 +30,7 @@
 }
 
 .splashText {
+  text-shadow: 16px 16px 16px #ffffff;
   color: #ff806f;
   font-size: 12em;
-  text-shadow: #fc222b 16px 16px 16px;
 }

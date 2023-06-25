@@ -30,6 +30,35 @@ class User(db.Model, SerializerMixin):
         'created_at': self.created_at,
         'updated_at': self.updated_at,
      }
+    
+class Worblin(db.Model, SerializerMixin):
+   __tablename__ = 'worblins'
+   id = db.Column(db.Integer, primary_key=True)
+   word = db.Column(db.String)
+   title = db.Column(db.String)
+
+   def to_dict(self):
+     return {
+       'id': self.id,
+       'title': self.title,
+       'word': self.word,
+     }
+   
+class UserWorblin(db.Model, SerializerMixin):
+   __tablename__ = 'user_worblins'
+   id = db.Column(db.Integer, primary_key=True)
+   worblin_id = db.Column(db.Integer,  db.ForeignKey('worblins.id'), nullable=False)
+   user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
+   completed_on = db.Column(db.DateTime)
+
+   def to_dict(self):
+    return {
+       'id': self.id,
+       'Worblin_id': self.worblin_id,
+       'user_id':self.user_id,
+       'completed_on':self.completed_on,
+    }   
+   
 
 class Block(db.Model, SerializerMixin):
    __tablename__ = 'blocks'
@@ -46,34 +75,6 @@ class Block(db.Model, SerializerMixin):
        #'favorited': self.favorited,
        'notes': self.notes
     }
-
-class Game(db.Model, SerializerMixin):
-   __tablename__ = 'games'
-   id = db.Column(db.Integer, primary_key=True)
-   name = db.Column(db.String(255))
-   notes = db.Column(db.String(512))
-
-   def to_dict(self):
-    return {
-       'id': self.id,
-       'name': self.name,
-       'notes': self.notes
-    }
-
-class UserGame(db.Model, SerializerMixin):
-   __tablename__ = 'user_games'
-   id = db.Column(db.Integer, primary_key=True)
-   game_id = db.Column(db.Integer,  db.ForeignKey('games.id'), nullable=False)
-   user_id = db.Column(db.Integer,  db.ForeignKey('users.id'), nullable=False)
-   completed_on = db.Column(db.DateTime)
-
-   def to_dict(self):
-    return {
-       'id': self.id,
-       'game_id': self.game_id,
-       'user_id':self.user_id,
-       'completed_on':self.completed_on,
-    }   
    
 class Location(db.Model, SerializerMixin):
    __tablename__ = 'locations'
@@ -111,3 +112,25 @@ class UserLocation(db.Model, SerializerMixin):
        'is_tricked':self.is_tricked,
        'is_treated':self.is_treated,
     } 
+   
+class GobJoke(db.Model, SerializerMixin):
+   __tablename__ = 'gobjokes'
+   id = db.Column(db.Integer, primary_key=True)
+   q = db.Column(db.String)
+   a = db.Column(db.String)
+
+   def to_dict(self):
+      return {
+         'id': self.id,
+         'q': self.q,
+         'a': self.a
+   }
+
+class Letter(db.Model, SerializerMixin):
+   __tablename__ = 'letters'
+   key = db.Column(db.String, primary_key=True)
+
+   def to_dict(self):
+      return {
+         'key': self.key
+   }

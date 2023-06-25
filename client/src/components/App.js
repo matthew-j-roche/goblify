@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './NavBar';
-import SplashScreen from './SplashScreen';
-import Login from './Login';
+import Splasm from './Splasm';
+import Bloodlogin from './Bloodlogin';
 import Signup from './Signup';
-import Home from './Home';
+import Tomb from './Tomb';
 import Profile  from './Profile';
 import Account from './Account';
 import About from './About';
-import Error from './Error';
+import Terror from './Terror';
+import Worblin from './Worblin';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
   }, []);
 
   // Function to handle user login
-  const handleLogin = () => {
+  const handleLogIn = () => {
     setLoggedIn(true);
   };
 
@@ -36,14 +37,19 @@ function App() {
     <Router>
       <NavBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path="/" element={loggedIn ? <Home /> : <SplashScreen />} />
-        <Route path="/login" element={loggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} />
+        <Route path="/splasm" element={<Splasm />} />
+        <Route path="/" element={ <Tomb />} />
+        {/* <Route path="/" element={loggedIn ? <Tomb /> : <SplashScreen />} /> */}
+        <Route path="/bloodlogin" element={loggedIn ? <Navigate to="/tomb" /> : <Bloodlogin onLogin={ handleLogIn } />} />
+        {/* <Route path="/login" element={loggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} /> */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/account" element={<Account />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/home" element={ loggedIn ? ( <Home username={loggedIn.username} /> ) : ( <Navigate to="/login" /> ) } />
+        {/* <Route path="/tomb" element={ loggedIn ? ( <Home username={loggedIn.username} /> ) : ( <Navigate to="/login" /> ) } /> */}
+        <Route path="/tomb" element={<Tomb />} />
         <Route path="/about" element={<About />} />
-        <Route path="/error" element={<Error />} /> {/* Render 404 page for all other routes */}
+        <Route path="/worblin" element={<Worblin />} />
+        <Route path="/terror" element={<Terror />} /> {/* Render 404 page for all other routes */}
       </Routes>
     </Router>
   );

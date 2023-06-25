@@ -12,12 +12,273 @@ html {
   padding: 0;
 }
 
-/* ///////////////////////////////////////////// */
-/* ///////////////////////////////////////NavBar */
-/* ///////////////////////////////////////////// */
+                                      /* ///////////////////////////////////////////// */
+                                          /* ///////////////////////////////////////Home */
+                                      /* ///////////////////////////////////////////// */
 
+
+body {
+
+}
+
+.bodyDiv {
+  border-radius: 32px;
+  margin-top: 2em;
+  width: 100%;
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
+  font-family: 'Olde English', sans-serif;
+
+}
+
+.mainColumns {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  outline: 4px solid black;
+  margin-left: 2%;
+  border-radius: .5em;
+  background-color:#ff4523
+}
+
+.mainColumn1 {
+  width: 64%;
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
+}
+
+.mainColumn2 {
+  width: 30%;
+  background-color: black;
+}
+
+.mc2Div {
+  display: flex;
+  justify-content: center;
+  font: Old-style;
+  color: white;
+  width: 100%;
+  height: 90%;
+  margin-left:12%;
+  margin-top: 6%;
+  outline: 32px solid red;
+  border-radius: .5em;
+}
+
+.terrorCol1 {
+  background-image: url("../assets/dungeonWall.png");
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
+}
+
+.terrorCol2 {
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
+}
+
+.terrorCol3 {
+  background-image: url("../assets/dungeonWall.png");
+  background-color: #ff4523;
+}
+  
+.gridDiv {
+  background-image: url("../assets/dungeonWall.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin-left: 0%;
+  border: 4px solid black;
+  min-height: 1000px;
+  filter: blur(.8px);
+  border-radius: 32px
+  /* background: linear-gradient(90deg, #fe2d38, #fc633d, orange, #fc633d, #fe2d38); */
+}
+
+.grid1 {
+  width: 66%;
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
+  display: grid;
+  border-radius: 16px;
+  grid-template-columns: 28% 43% 23%;
+  grid-auto-rows: minmax(1em, auto);
+  justify-items: stretch;
+  align-items: center;
+  margin-left: 8%;
+  /* row-gap: 3%; */
+  column-gap: 3%;;
+}
+
+.grid2 {
+  font-size: 2em;
+  /* border: 4px double black; */
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: 28% 58% 8%;
+  grid-auto-rows: minmax(1em, auto);
+  justify-items: stretch;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  row-gap: 25%;
+  margin-top: 8%;
+  margin-left: -3%; 
+  margin-right: -2%; 
+  column-gap: 3%;;
+}
+
+.overAboutContainer{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.aboutContainer {
+  background-color: #e4188b;
+  outline: 8px solid black;
+  padding: 1em;
+  margin-left: 8em;
+  padding-bottom: 4em;
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.aboutDiv1 {
+  font-size: 8em;
+  margin-left: 4em;
+  
+}
+
+.tombPaz1 {
+  width: 45%;
+  height: auto;
+  margin-top: 4em;
+  margin-left: 3em;
+  animation: fadeIn 12s ease-in-out;
+}
+
+  @keyframes fadeIn {
+    0% { opacity: 0;}
+    100% { opacity: 1; } 
+  }
+
+.box {
+  outline: 4px solid black;
+  /* outline-offset: 4px; */
+  border-radius: .2em;
+  padding-left: .4em;
+  padding-top: .4em;
+  padding-bottom:.4em;
+}
+
+.box1box {
+  width: 100%;
+  border-radius: 16px;
+  display: flex;
+  outline: 4px solid black;
+  flex-direction: row;
+  /* box-shadow: .1em .1em .1em .3em #ffba75; */
+}
+
+.box1 {
+  font-size: 1.2em;
+  font-weight: 900;
+  grid-column: 1/4;
+  grid-row: 1/3;
+  background: linear-gradient(45deg, #ffb558, #fb1a68);
+  margin: oem;
+  padding-top: .1em;;
+  border: 8px solid #fb1a68;
+  border-radius: 16px;
+}
+
+.box1a {
+  filter: blur(1px);
+  border: 8px double black;
+  width: 26%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.box1b {
+  filter: blur(1px);
+  border: 12px double black;
+  width: 48%;
+  display: flex;
+  justify-content: center;
+  font-size: 4em;
+  font-weight: 900;
+  background-color: orange;
+  margin: oem;
+  padding-top: .1em;;
+}
+
+.box1c {
+  
+  border: 8px double black;
+  width: 26%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.details {
+  margin-left: 1em;
+}
+
+.box2 {
+  font-family: 'Roboto Condensed', sans-serif;
+  grid-column: 1/4;
+  padding: .5em;
+  border-radius: 4px;
+  margin-left: -4%;
+  margin-right: -16%;
+  margin-bottom: 4px;
+  margin-top: .4em;
+  outline: 4px solid black;
+  /* margin: 0em; */
+  background-color: #fc633d;
+  box-shadow: 4px 4px 4px white;
+}
+
+.box3 {
+  grid-column: 1/3;
+  background-color: #ff4523;
+}
+
+.box4 {
+  background-color: #fb1a68;
+}
+
+.box5 {
+  background-color: #ffb558;
+}
+
+.box6 {
+  background-color: #ee2054;
+}
+
+.box7 {
+  background-color: #fb1a68;
+}
+
+.box8 {
+  background-color: #ffb558;
+}
+
+.box9 {
+  background-color: #e4188b;
+}
+
+.box10 {
+  background-color: #fb1a68;
+}
+
+.box11 {
+  background-color: #ffb558;
+}
 
 .nav {
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
   width: 90%;
   height: 0px;
   position: l;
@@ -27,13 +288,14 @@ html {
   display: flex;
   flex-direction: row;
   width: 90%;
-  justify-content: right;
+  justify-content: left;
   margin: 2%;
 }
 
 
 .navIcon {
   display: inline-block;
+  background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
   height: 40%;
   filter: blur(2px);
   transition: blur .5s ease-in-out;
@@ -88,42 +350,6 @@ html {
   margin-left: 8%;
 }
 
-.taskCardTopRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 1%;
-}
-
-.taskCardBottomRow {
-  margin: 1%;
-}
-
-.taskCardTitle {
-  background-color: #ffffff;
-  padding-left: 1%;
-  padding-right: 1%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px black;
-}
-
-.taskCardPriority {
-  background-color: #ffffff;
-  padding-left: 1%;
-  padding-right: 1%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px black;
-}
-
-.taskCardDescription {
-  background-color: #ffffff;
-  padding-left: 1%;
-  padding-right: 1%;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px black;
-} */
-
-
 /* .navbar a {
   text-decoration: none;
   color: #000;
@@ -165,4 +391,106 @@ html {
   width: 70%;
   margin: auto;
   margin-bottom: 20%;
+}
+
+.worblinDiv {
+  width: 6em;
+  display: flex;
+  flex-direction: row;
+}
+
+.navTomb {
+  width: 8em;
+  background: linear-gradient(270deg, orange, white, #ee2054);
+  font-family: 'Olde English', sans-serif;
+  height: 1.6em;
+}
+
+.navTomb:hover .replies{
+  display: none;
+ }
+
+ .navTomb:hover:before {
+  content: "H o m e"
+ }
+
+
+
+.navProfile {
+  width: 8em;
+  background: linear-gradient(270deg, orange, white, #fc633d);
+  font-family: 'Olde English', sans-serif;
+  height: 1.6em;
+}
+
+.navProfile:hover .replies{
+  display: none;
+ }
+
+ .navProfile:hover:before {
+  content: "Profile"
+ }
+
+
+.navAccount {
+  width: 8em;
+  background: linear-gradient(270deg, orange, white, #fc633d);
+  font-family: 'Olde English', sans-serif;
+  height: 1.6em;
+}
+
+.navAccount:hover .replies{
+  display: none;
+ }
+
+ .navAccount:hover:before {
+  content: "A c c t"
+ }
+
+
+.navAbout {
+  width: 8em;
+  background: linear-gradient(270deg, orange, white, #ffb558);
+  font-family: 'Olde English', sans-serif;
+  height: 1.6em;
+}
+
+.navAbout:hover .replies{
+  display: none;
+ }
+
+ .navAbout:hover:before {
+  content: "A b o u t"
+ }
+
+
+.navWorblin {
+  width: 8em;
+  background: linear-gradient(270deg, orange, white, #ffb558);
+  font-family: 'Olde English', sans-serif;
+  height: 1.6em;
+}
+
+.navWorblin:hover .replies{
+  display: none;
+}
+
+.navWorblin:hover:before {
+  content: "Worblin℗"
+}
+
+
+.navBloodLogout {
+  width: 8em;
+  background: linear-gradient(270deg, #ff4523, white, #ffb558);
+  font-family: 'Olde English', sans-serif;
+  height: 1.6em;
+}
+
+.navBloodLogout:hover .replies{
+  display: none;
+}
+
+.navBloodLogout:hover:before {
+  content: "Bloodlogout"
 }

@@ -5,8 +5,11 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from models import db, User, Block, Game, UserGame, Location, UserLocation
+from datetime import date
+from models import db, User, UserLocation, GobJoke, Worblin, Letter
 from config import app, db
+from datetime import datetime
+
 
 
 
@@ -84,7 +87,7 @@ class Signup(Resource):
         return make_response(jsonify({'message': 'User created successfully'}), 201)
 
 
-class Login(Resource):
+class Bloodlogin(Resource):
     def post(self):
         data = request.get_json()
         if not data:
@@ -102,36 +105,26 @@ class Login(Resource):
 
         session['user_id'] = user.id
 
-        return make_response(jsonify({'message': 'User logged in successfully'}), 200)
+        return make_response(jsonify({'message': 'User bloodloggedin successfully'}), 200)
 
 
-class Logout(Resource):
+class Bloodlogout(Resource):
     def post(self):
         if 'user_id' in session:
             session.clear()  # Clear the entire session
-            return make_response(jsonify({'message': 'Logged out successfully'}), 200)
+            return make_response(jsonify({'message': 'Bloodloggedout successfully'}), 200)
         else:
-            return make_response(jsonify({'message': 'No user logged in'}), 200)
+            return make_response(jsonify({'message': 'No user bloodloggedin'}), 200)
 
 
 class CheckLoginStatus(Resource):
     def get(self):
         if 'user_id' in session:
-            return {'loggedIn': True}, 200
+            return {'bloodloggedIn': True}, 200
         else:
-            return {'loggedIn': False}, 200
+            return {'bloodloggedIn': False}, 200
         
-    
-
-
-class UserGames(Resource):
-    @login_required
-    def get(self, user):
-        user = get_authenticated_user()  # Retrieve the authenticated user
-        user_games = UserGame.query.filter_by(user_id=user.id).all()
-        user_games_data = [ug.to_dict() for ug in user_games]
-        return jsonify(user_games_data)
-
+  # Retrieve the authenticated userter_by(user_id=user.id).all() for ug in user_games]
 
 class UserLocations(Resource):
     @login_required
@@ -140,15 +133,47 @@ class UserLocations(Resource):
         user_locations = UserLocation.query.filter_by(user_id=user.id).all()
         user_locations_data = [ul.to_dict() for ul in user_locations]
         return jsonify(user_locations_data)
+    
+class GobJokeByDay(Resource):
+    today = datetime.today().day
+    def get(self, day):
+        joke = GobJoke.query.get(day)
+        if joke:
+            return jsonify(joke.to_dict())
+        return jsonify({'error': 'No GobJoke. Why not?'})
    
+class Worblins(Resource):
+    def get(self):
+        worblins = Worblin.query.all()
+        worblin_list = [worblin.to_dict() for worblin in worblins]
+        return jsonify(worblin_list)   
+
+class Letters(Resource):
+    def get(self):
+        letters = Letter.query.all()
+        letter_list = [letter.to_dict() for letter in letters]
+        return jsonify(letter_list)
 
 
-api.add_resource(Login, '/login')
-api.add_resource(Logout, '/logout')
+    
+    
+# class UserWorblin(Resource):
+    # @login_required
+    # def get(self, user):
+        # user = get_authenticated_user()
+        # user_worblins = UserWorblin.query.filter_by(user_id=user.id).all()
+        # user_worblins_data = [uw.to_dict() for uw in user_worblins]
+        # return jsonify(user_worblins_data)
+
+api.add_resource(GobJokeByDay, '/gobjokes/<int:day>')
+api.add_resource(Worblins, '/worblins')
+api.add_resource(Bloodlogin, '/bloodlogin')
+api.add_resource(Bloodlogout, '/bloodlogout')
 api.add_resource(Account, '/account')
 api.add_resource(Signup, '/signup')
+api.add_resource(Letters, '/letters')
 api.add_resource(CheckLoginStatus, '/check-login-status')
-api.add_resource(UserGames, '/user-games')
+# api.add_resource(UserWorblin, '/user-worblins')
 api.add_resource(UserLocations, '/user-locations')
 
 

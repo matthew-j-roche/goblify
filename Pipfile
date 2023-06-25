@@ -16,6 +16,8 @@ cors = "*"
 faker = "*"
 switch = "*"
 flask-bcrypt = "*"
+sqlalchemy = "*"
+serializer = "*"
 
 [dev-packages]
 
