@@ -38,11 +38,12 @@ function NavBar({ loggedIn, setLoggedIn }) {
       <ul className="navUl">
         <li className="navLi">
           <NavLink exact to="/tomb"><button className='navTomb'>Tomb</button></NavLink>
+          <NavLink exact to="/bloodlogin"><button className='navBloodLogout'>Bloodlogin</button></NavLink>
           <NavLink to="/profile"><button className='navProfile'>Profile</button></NavLink>
           <NavLink to="/account"><button className='navAccount'>A c c t</button></NavLink>
           <NavLink to="/about"><button className='navAbout'>About</button></NavLink>
           <NavLink to="/worblin"><button className='navWorblin'>Worblin</button></NavLink>
-          <NavLink to="/bloodlogout"><button className='navBloodLogout'>Bloodlogout</button></NavLink>
+          <NavLink to="/"><button className='navBloodLogout'>Bloodlogout</button></NavLink>
         </li>
       </ul>
     </nav>

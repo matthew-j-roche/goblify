@@ -1,41 +1,35 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import dungeonWallImage from '../assets/dungeonWall.png';
+import { Link } from 'react-router-dom';
+// import dungeonWallImage from '../assets/dungeonWall.png';
+import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
 
 
-const Terror = () => {
-  const { id } = useParams();
-
+function Terror() {
   return (
-    <div className="bodyDiv">
-      <div className="grid1">
-        <div className="box1">
-          <div className="box1box">
-            <div className="box1a"><h1>box1a</h1></div>
-            <div className="box1b">Goblify</div>  
-            <div className="box1c"><h1>box1c</h1></div>
-          </div>
+    <div className='bodyDiv'>
+        <div className="grid1">
+            <div className="box1">
+                <div className="box1box">
+                    <div className="box1a"><h1>box1a</h1></div>
+                    <div className="box1b">Goblify</div>  
+                    <div className="box1c"><h1>box1c</h1></div>
+                </div>
+            </div>
+            <div className='box2'>P L E A S E  S T O P !!</div>
+        </div>  
+        <div className="accountGrid">
+            <div className="agDiv1"><div className='agDiv1Sub'>
+              <h1 className="terror4041">404 - Page Not Found</h1>
+              <h2 className="terror4042">The page you are looking for does not exist.</h2>
+              < Link to="/tomb" className="terrorTombLink">
+                  <div className='goBackDiv'>Go Back!</div>
+              </Link>
+            </div></div>
+            <div className="agDiv2"><div className="agDiv2Sub">
+              <img src={pazuzuTransparentImage} className='accPaz1'/>  
+              <img src={pazuzuTransparentImage} className='accPaz2'/>  
+            </div></div>
         </div>
-      <div className="box2">Box 2</div>
-    </div>  
-    <div className="mainColumns">
-      <div className="mainColumn1">
-        <div className="gridDiv">
-          <div className="grid2">
-            <h1 className="terror4041">404 - Page Not Found</h1>
-            <h2 className="terror4042">The page you are looking for does not exist.</h2>
-            < Link to="/tomb" className="terrorTombLink">
-                <div className='goBackDiv'>Go Back!</div>
-            </Link>
-          </div>
-        </div>
-      </div>
-        <div className="mainColumn2">
-          <div className="mc2Div">
-            <img src="../assets/pazuzuTransparent.png" className="tombPaz1" alt="Pazuzuz's gotta secret!" />
-          </div>
-        </div>
-      </div>
     </div>
   )
 };

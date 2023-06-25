@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
 
 
 function Account() {
@@ -84,55 +85,73 @@ function Account() {
   };
 
   return (
-    <div className="accountDiv1">
-      <div className="accountDiv2">
-        {user ? (
-          <div>
-            <h1 className="accounth1">
-              <div className="accountDiv3">{user.username}</div>User Information
-            </h1>
-            <p><strong>Username:</strong> {user.username}</p>
-            <div className="text-center">
-              {showNewUsernameInput ? (
+    <div className='bodyDiv'>
+      <div className="grid1">
+        <div className="box1">
+          <div className="box1box">
+            <div className="box1a"><h1>box1a</h1></div>
+            <div className="box1b">Account</div>  
+            <div className="box1c"><h1>box1c</h1></div>
+          </div>
+        </div>
+        <div className='box2'>Goblify</div>
+      </div>  
+      <div className="accountGrid">
+        <div className="agDiv1"><div className='agDiv1Sub'>
+          <div className="accountDiv1">
+            <div className="accountDiv2">
+              {user ? (
                 <div>
-                  <label htmlFor="newUsername" className="font-medium">New Username:</label>
-                  <input
-                    type="text"
-                    id="newUsername"
-                    value={newUsername}
-                    onChange={handleUsernameChange}
-                    className={`${showNewUsernameInput ? 'ring-green-500 ring-2' : ''}`}
-                  />
-                  <button className="accountUpdateUsernameButton" onClick={updateUsername}>Update Username</button>
+                  <h1 className="accounth1"><div className="accountDiv3">{user.username}</div>User Information</h1>
+                  <p><strong>Username:</strong> {user.username}</p>
+                  <div className="text-center">
+                    {showNewUsernameInput ? (
+                      <div>
+                        <label htmlFor="newUsername" className="font-medium">New Username:</label>
+                        <input
+                        type="text"
+                        id="newUsername"
+                        value={newUsername}
+                        onChange={handleUsernameChange}
+                        className={`${showNewUsernameInput ? 'ring-green-500 ring-2' : ''}`}
+                        />
+                        <button className="accountUpdateUsernameButton" onClick={updateUsername}>Update Username</button>
+                      </div>
+                    ) : (
+                      <button className="accountNewUsernameButton" onClick={() => setShowNewUsernameInput(true)}>Change Username</button>
+                    )}
+                    {showNewPasswordInput ? (
+                      <div>
+                        <label htmlFor="newPassword" className="font-medium">New Password:</label>
+                        <input
+                          type="password" 
+                          id="newPassword" 
+                          value={newPassword} 
+                          onChange={handlePasswordChange} 
+                          className={`${showNewPasswordInput ? 'ring-green-500 ring-2' : ''}`}
+                        />
+                        <button className="accountUpdatePasswordButton" onClick={updatePassword}>Update Password</button>
+                      </div>
+                    ) : (
+                      <button className="accountNewPasswordButton" onClick={() => setShowNewPasswordInput(true)}>Change Password</button>
+                    )}
+                  </div>
+                  <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
+                  <p><strong>Created At:</strong> {user.created_at}</p>
                 </div>
               ) : (
-                <button className="accountNewUsernameButton" onClick={() => setShowNewUsernameInput(true)}>Change Username</button>
-              )}
-              {showNewPasswordInput ? (
-                <div>
-                  <label htmlFor="newPassword" className="font-medium">New Password:</label>
-                  <input
-                    type="password"
-                    id="newPassword"
-                    value={newPassword}
-                    onChange={handlePasswordChange}
-                    className={`${showNewPasswordInput ? 'ring-green-500 ring-2' : ''}`}
-                  />
-                  <button className="accountUpdatePasswordButton" onClick={updatePassword}>Update Password</button>
-                </div>
-              ) : (
-                <button className="accountNewPasswordButton" onClick={() => setShowNewPasswordInput(true)}>Change Password</button>
+                <p className="accountLoading">Loading user information...</p>
               )}
             </div>
-            <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
-            <p><strong>Created At:</strong> {user.created_at}</p>
           </div>
-        ) : (
-          <p className="accountLoading">Loading user information...</p>
-        )}
+        </div></div>
+        <div className="agDiv2"><div className="agDiv2Sub">
+        <img src={pazuzuTransparentImage} className='accPaz1'/>  
+        <img src={pazuzuTransparentImage} className='accPaz2'/>  
+        </div></div>
       </div>
     </div>
-  );
+  )
 }
 
 export default Account;
