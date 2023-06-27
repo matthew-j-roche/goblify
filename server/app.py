@@ -39,12 +39,12 @@ def login_required(f):
 
 @app.route('/')
 def index():
-    return '<h1>Trick-or-Treatster</h1>'
+    return '<h1>GOBLIFY</h1>'
 
 
 class Account(Resource):
     @login_required
-    def patch(self, user):
+    def patch(user):
         data = request.get_json()
         if not data:
             return make_response(jsonify({'error': 'Invalid request data'}), 400)
@@ -63,7 +63,7 @@ class Account(Resource):
         return make_response(jsonify({'message': 'Account updated successfully'}), 200)
 
     @login_required
-    def get(self, user):
+    def get(user):
         return jsonify(user.to_dict())
 
 
@@ -114,7 +114,7 @@ class Bloodlogout(Resource):
             session.clear()  # Clear the entire session
             return make_response(jsonify({'message': 'Bloodloggedout successfully'}), 200)
         else:
-            return make_response(jsonify({'message': 'No user bloodloggedin'}), 200)
+            return make_response(jsonify({'message': 'No user bloodloggedin'}), 400)
 
 
 class CheckLoginStatus(Resource):
@@ -122,7 +122,7 @@ class CheckLoginStatus(Resource):
         if 'user_id' in session:
             return {'bloodloggedIn': True}, 200
         else:
-            return {'bloodloggedIn': False}, 200
+            return {'bloodloggedIn': False}, 400
         
   # Retrieve the authenticated userter_by(user_id=user.id).all() for ug in user_games]
 
@@ -134,13 +134,11 @@ class UserLocations(Resource):
         user_locations_data = [ul.to_dict() for ul in user_locations]
         return jsonify(user_locations_data)
     
-class GobJokeByDay(Resource):
-    today = datetime.today().day
-    def get(self, day):
-        joke = GobJoke.query.get(day)
-        if joke:
-            return jsonify(joke.to_dict())
-        return jsonify({'error': 'No GobJoke. Why not?'})
+class GobJokes(Resource):
+    def get(self):
+        gobjokes = GobJoke.query.all()
+        gobjoke_list = [gobjoke.to_dict() for gobjoke in gobjokes]
+        return jsonify(gobjoke_list)
    
 class Worblins(Resource):
     def get(self):
@@ -165,7 +163,7 @@ class Letters(Resource):
         # user_worblins_data = [uw.to_dict() for uw in user_worblins]
         # return jsonify(user_worblins_data)
 
-api.add_resource(GobJokeByDay, '/gobjokes/<int:day>')
+api.add_resource(GobJokes, '/gobjokes')
 api.add_resource(Worblins, '/worblins')
 api.add_resource(Bloodlogin, '/bloodlogin')
 api.add_resource(Bloodlogout, '/bloodlogout')
@@ -173,7 +171,6 @@ api.add_resource(Account, '/account')
 api.add_resource(Signup, '/signup')
 api.add_resource(Letters, '/letters')
 api.add_resource(CheckLoginStatus, '/check-login-status')
-# api.add_resource(UserWorblin, '/user-worblins')
 api.add_resource(UserLocations, '/user-locations')
 
 

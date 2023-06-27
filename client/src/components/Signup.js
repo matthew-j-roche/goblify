@@ -46,8 +46,8 @@ function Signup() {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          window.alert("Account created successfully. Please log in.");
-          navigate("/login");
+          window.alert("Account created successfully");
+          navigate("/tomb");
         })
         .catch((error) => {
           console.log(error);
@@ -62,16 +62,24 @@ function Signup() {
   const handleGoBack = () => {
     navigate("/login")
   };
+
   return (
-    <div className="signupDiv1">
-      <div className="signupDiv2">
-        <div className="signupDiv3">
-          <button
-            className="flex items-center text-teal-500 hover:text-teal-700"
-            onClick={handleGoBack}>Back
-          </button>
+    <div className='bodyDiv'>
+      <div className="grid1">
+        <div className="box1">
+          <div className="box1box">
+            <div className="box1a"><h1>box1a</h1></div>
+            <div className="box1b">Signup</div>  
+            <div className="box1c"><h1>box1c</h1></div>
+          </div>
         </div>
-        <h1 className="text-2xl font-bold text-center">SignUp Here!</h1>
+        <div className='box2'>Signup</div>
+      </div>  
+      <div className="accountGrid">
+        <div className="agDiv1"></div>
+        <div className="signupDiv1">
+          <button className="signUpButton" onClick={handleGoBack}>Back</button>
+        </div>
         <form className="signupForm" onSubmit={handleSubmitSignup}>
           <input
             className="signupInput"
@@ -113,9 +121,7 @@ function Signup() {
             placeholder="REENTER PASSWORD"
             onChange={handleNewUserChange}
           />
-          <button className="signupButton" type="submit">
-            Sign up
-          </button>
+          <button className="signUpButton" type="submit">Sign up</button>
         </form>
       </div>
     </div>

@@ -31,7 +31,7 @@ function Worblin() {
                         <div className="box1c"><h1>box1c</h1></div>
                     </div>
                 </div>
-                <div className='box2'><div class="box2Worblin">today's puzzle: { title }</div></div>
+                <div className='box2'><div className="box2Worblin">today's puzzle: { title }</div></div>
             </div>  
             <div className="accountGrid">
                 <div className="agDiv1"><div className='agDiv1Sub'>

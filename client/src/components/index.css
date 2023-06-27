@@ -28,6 +28,7 @@ body {
   margin-left: 4em;
   margin-top: 2em;
   width: 100%;
+  min-height: 1000px;
   /* background: linear-gradient(270deg, orange, #fc633d, #ee2054, black); */
   background-color: black;
   font-family: 'Olde English', sans-serif;
@@ -95,7 +96,8 @@ body {
 }
 
 .grid1 {
-  width: 80%;
+  width: 100%;
+  height: 100%;
   /* background: linear-gradient(270deg, orange, #fc633d, #ee2054, black); */
   display: grid;
   border-radius: 16px;
@@ -128,16 +130,14 @@ body {
 .overAboutContainer{
   display: flex;
   flex-direction: row;
-
 }
 
 .aboutContainer {
   background-color: #e4188b;
   outline: 8px solid black;
   padding: 1em;
-  margin-left: 8em;
   padding-bottom: 4em;
-  width: 48%;
+  margin-left: 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -183,6 +183,7 @@ body {
 
 .box1 {
   font-size: 1.2em;
+  width: 100%;
   font-weight: 900;
   grid-column: 1/4;
   grid-row: 1/3;
@@ -199,6 +200,25 @@ body {
   justify-content: center;
   align-content: center;
 }
+
+.box1aAbout {
+  filter: blur(1px);
+  border: 8px double black;
+  width: 18%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+box1cAbout {
+  border: 8px double black;
+  width: 34%;
+  display: flex;
+  border-top-right-radius: 2em;
+  justify-content: center;
+  align-content: center;
+ }
 
 .box1b {
   filter: blur(1px);
@@ -269,27 +289,27 @@ body {
   background-color: #e4188b;
 }
 
-.box10 {
-  background-color: #fb1a68;
-}
-
-.box11 {
-  background-color: #ffb558;
-}
-
 .nav {
+  filter: blur(.5px);
   background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
-  width: 90%;
-  height: 0px;
+  width: 100%;
+  margin-left: 1em;
+  outline: 24px dotted #e7278d;
+  /* height: 0px; */
   position: l;
+}
+
+.navUl {
+  width: 90%;
 }
 
 .navLi {
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 80%;
   justify-content: left;
   margin: 2%;
+  filter: blur(.5px);
 }
 
 
@@ -400,9 +420,9 @@ body {
 }
 
 .navTomb {
-  width: 8em;
+  width: auto;
+  font-family: 'Limelight', cursive;
   background: linear-gradient(270deg, orange, white, #ee2054);
-  font-family: 'Olde English', sans-serif;
   height: 1.6em;
 }
 
@@ -410,32 +430,29 @@ body {
   display: none;
  }
 
- .navTomb:hover:before {
-  content: "H o m e"
- }
-
-
-
-.navProfile {
-  width: 8em;
-  background: linear-gradient(270deg, orange, white, #fc633d);
-  font-family: 'Olde English', sans-serif;
+.navBloodLogin {
+  width: auto;
+  font-family: 'Limelight', cursive;
+  background: linear-gradient(270deg, orange, white,#ee2054);
   height: 1.6em;
 }
 
-.navProfile:hover .replies{
-  display: none;
- }
+.navProfile {
+  width: auto;
+  font-family: 'Limelight', cursive;
+  background: linear-gradient(270deg, orange, white, #fc633d);
+  height: 1.6em;
+}
 
- .navProfile:hover:before {
-  content: "Profile"
- }
+.navProfile:hover {
+  display: "oooo";
+}
 
 
 .navAccount {
-  width: 8em;
+  width: auto;
+  font-family: 'Limelight', cursive;
   background: linear-gradient(270deg, orange, white, #fc633d);
-  font-family: 'Olde English', sans-serif;
   height: 1.6em;
 }
 
@@ -443,15 +460,10 @@ body {
   display: none;
  }
 
- .navAccount:hover:before {
-  content: "A c c t"
- }
-
-
 .navAbout {
-  width: 8em;
+  width: auto;
+  font-family: 'Limelight', cursive;
   background: linear-gradient(270deg, orange, white, #ffb558);
-  font-family: 'Olde English', sans-serif;
   height: 1.6em;
 }
 
@@ -459,15 +471,10 @@ body {
   display: none;
  }
 
- .navAbout:hover:before {
-  content: "A b o u t"
- }
-
-
 .navWorblin {
-  width: 8em;
+  width: auto;
+  font-family: 'Limelight', cursive;
   background: linear-gradient(270deg, orange, white, #ffb558);
-  font-family: 'Olde English', sans-serif;
   height: 1.6em;
 }
 
@@ -475,24 +482,28 @@ body {
   display: none;
 }
 
-.navWorblin:hover:before {
-  content: "Worblin℗"
+.navGobMap {
+  width: auto;
+  font-family: 'Limelight', cursive;
+  background: linear-gradient(270deg, orange, 
+white, #ffb558);
+  height: 1.6em;
+  transition: 5s;
 }
 
+.navGobMap:hover {
+  background: linear-gradient(270deg, orange, white, #44dfbd, white, #ffb558);
+}
 
 .navBloodLogout {
-  width: 8em;
+  width: auto;
+  font-family: 'Limelight', cursive;
   background: linear-gradient(270deg, #ff4523, white, #ffb558);
-  font-family: 'Olde English', sans-serif;
   height: 1.6em;
 }
 
 .navBloodLogout:hover .replies{
   display: none;
-}
-
-.navBloodLogout:hover:before {
-  content: "Bloodlogout"
 }
 
 .accountGrid {
@@ -548,15 +559,68 @@ body {
 }
 
 .accPaz1 {
-  margin: 1em;
-  width: 60%;
+  padding: 3em;
+  margin: -4em;
+  width: auto;
   height: auto;
+  animation: accPaz1Animation 2s infinite ease-in-out;
+}
+
+@keyframes accPaz1Animation {
+  0% { transform: translateY(0) }
+  100% { transform: translateY(100%) }
 }
 
 .accPaz2 {
-  margin: 1em;
-  width: 60%;
+  padding: 3em;
+  margin: -4em;
+  width: auto;
   height: auto;
+  animation: accPaz2Animation 2s infinite linear;
+}
+
+@keyframes accPaz2Animation {
+  0% { opacity: 1 }
+  50% { opacity: 0.5 }
+  100% { opacity: 1 }
+}
+
+.accPaz3 {
+  padding: 3em;
+  margin: -4em;
+  width: auto;
+  height: auto;
+  animation: accPaz3Animation 2s infinite alternate-reverse;
+}
+
+@keyframes accPaz3Animation {
+  0% { transform: rotateZ(0) }
+  100% { transform: rotateZ(360deg) }
+  }
+
+.accPaz4 {
+    width: auto;
+    height: auto;
+    margin: 2em;
+    transform: translateX(3em);
+    animation: accPaz4Animation 4s infinite linear;
+}
+
+@keyframes accPaz4Animation {
+  0% { transform: translateX(0) }
+  100% { transform: translateX(300px) rotateZ(360deg) }
+}
+
+.accPaz5 {
+    width: auto;
+    height: auto;
+    margin: 3em;
+    animation: accPaz5Animation 4s infinite alternate;
+}
+
+@keyframes accPaz5Animation {
+  0% { transform: scaleX(1) }
+  100% { transform: scaleX(1.5) }
 }
 
 .loginDiv1 {
@@ -646,3 +710,71 @@ body {
                 0 0 48px #12f1fc,
                 0 0 200px #44dfbd;
 }
+
+.mapContainer {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+/* .signUpButton { */
+  /* font-size: 1em; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* padding: 24px 24px; */
+  /* background-color: #e7278d; */
+  /* color: #000000; */
+  /* border: none; */
+  /* border-radius: 16px; */
+  /* letter-spacing: 8px; */
+  overflow: scroll;
+  /* transition: 2.5s; */
+  /* cursor: pointer; */
+/* } */
+
+/* .signUpButton:hover{ */
+    /* background: #e7278d; */
+    /* color: #df16df; */
+    /* box-shadow: 0 0 32px #f45303, */
+                /* 0 0 40px #c003f4, */
+                /* 0 0 48px #fbfcfc, */
+                /* 0 0 200px #44dfbd; */
+/* } */
+
+
+
+/* .navGobMap { */
+  /* width: auto; */
+  /* font-family: 'Limelight', cursive; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* padding: 12px 12px; */
+  /* background: linear-gradient(270deg, orange, white, #ffb558); */
+  /* height: 1.6em; */
+  /* transition: 2.5s; */
+ /* } */
+ /*  */
+ /* .navGobMap:hover { */
+  /* background: linear-gradient(270deg, orange, white, #44dfbd, white, #ffb558); */
+  /* color: white; */
+  /* box-shadow: 0 0 32px #f45303, */
+            /* 0 0 40px #c003f4, */
+            /* 0 0 48px #12f1fc, */
+            /* 0 0 200px #44dfbd; */
+ /* } */
+ 
+ /* navGobMap:hover:before { */
+  /* content: "GobMap℗" */
+ /* } */
+
+ .gobMapDiv {
+  height: 100vh;
+  width: 100vw;
+ }
+ .map-container {
+  height: 100%;
+  width: 100%;
+ }

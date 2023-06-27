@@ -18,6 +18,7 @@ switch = "*"
 flask-bcrypt = "*"
 sqlalchemy = "*"
 serializer = "*"
+marker = "*"
 
 [dev-packages]
 

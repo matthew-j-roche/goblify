@@ -1,28 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function GobJoke(props) {
+function GobJoke() {
+  const [q, setQ] = useState(null)
+  const [a, setA] = useState(null)
+  const today = new Date().getDate()
   useEffect(() => {
-    const fetchGobJoke = async () => {
-      try {
-        const date = new Date();
-        const day = date.getDate();
-        const response = await fetch(`/gobjokes/${day}`);
-        // const joke = await response.json();
-        // setJoke(joke);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchGobJoke();
-  }, []);
+    fetch('http://localhost:4000/gobjokes')
+        .then(res => res.json())
+        .then(json => {
+            const todayGobJoke = json.find(g => g.id === today)
+            console.log(todayGobJoke)
+            setQ(todayGobJoke.q)
+            setA(todayGobJoke.a)
+        })
+    }, [])
 
   return (
     <details>
       <summary>
-        <em>{props.q}</em>
+        <em>{q}</em>
       </summary>
-      <em>{props.a}</em>
+      <em>{a}</em>
     </details>
   );
 }

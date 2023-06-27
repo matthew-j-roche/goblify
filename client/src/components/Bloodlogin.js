@@ -10,7 +10,7 @@ function Bloodlogin({ onLogin }) {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("/login", {
+      const response = await fetch("/bloodlogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ function Bloodlogin({ onLogin }) {
       if (response.ok) {
         // Login was successful, trigger the onLogin callback
         onLogin();
-        navigate("/home");
+        navigate("/tomb");
       } else {
         // Login failed, handle the error
         throw new Error("Login failed. Please check your credentials.");
@@ -38,11 +38,11 @@ function Bloodlogin({ onLogin }) {
     e.preventDefault();
 
     // Check if the username input contains an email
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (emailRegex.test(username)) {
-      setError("Please enter your username instead of an email.");
-      return;
-    }
+    // const emailRegex = /\S+@\S+\.\S+/;
+    // if (emailRegex.test(username)) {
+      // setError("Please enter your username instead of an email.");
+      // return;
+    // }
 
     handleLogin();
   };

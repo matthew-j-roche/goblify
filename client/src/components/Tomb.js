@@ -4,46 +4,40 @@ import './index.css';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
 
 
-function Tomb() {
+function Tomb({ username }) {
 
   return (
-    <div class="bodyDiv">
-      <div class="grid1">
-        <div class="box1">
-          <div class="box1box">
-            <div class="box1a"><h1></h1></div>
-            <div class="box1b">Goblify</div>  
-            <div class="box1c">
+    <div className="bodyDiv">
+      <div className="grid1">
+        <div className="box1">
+          <div className="box1box">
+            <div className="box1a"><h1></h1></div>
+            <div className="box1b">Goblify</div>  
+            <div className="box1c">
             </div>
           </div>
         </div>
-        <div class="box2">
-        <details className='details'>
-             <summary>
-               <em>'Why don’t mummies take time off?'</em>
-             </summary>
-             <em>'They're afraid to unwind'</em>
-           </details>
-          {/* <GobJoke /> */}
+        <div className="box2">
+          <GobJoke />
         </div>
       </div>  
-      <div class="mainColumns">
-        <div class="mainColumn1">
-          <div class="gridDiv">
-            <div class="grid2">
-              <div class="box box3">Worblin. 6/22: "Shhhh! Satan's Sleeping in the Next Room..."</div>  
-              <div class="box box5">5</div>  
-              <div class="box box6">Box 6</div>  
-              <div class="box box7">Box 7</div>  
-              <div class="box box8">8</div>  
-              <div class="box box9">Box 9</div>  
+      <div className="mainColumns">
+        <div className="mainColumn1">
+          <div className="gridDiv">
+            <div className="grid2">
+              <div className="box box3">Hello {username}</div>  
+              <div className="box box5">5</div>  
+              <div className="box box6">Box 6</div>  
+              <div className="box box7">Box 7</div>  
+              <div className="box box8">8</div>  
+              <div className="box box9">Box 9</div>  
               {/* <div class="box box10">Box 10</div>   */}
               {/* <div class="box box11">11</div>   */}
             </div>
           </div>
         </div>
-        <div class="mainColumn2">
-          <div class="mc2Div">
+        <div className="mainColumn2">
+          <div className="mc2Div">
             <img src={pazuzuTransparentImage} className="tombPaz1" alt="Pazuzu's gotta secret!" />
           </div>
         </div>
