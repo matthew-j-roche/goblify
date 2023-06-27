@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { AuthProvider } from '../Contexts/AuthContext';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
 
 
@@ -15,9 +16,10 @@ function Account() {
 
   const fetchUser = async () => {
     try {
-      const response = await fetch('/account');
+      const response = await fetch('/users');
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         setUser(data);
       } else {
         console.log('Error fetching user:', response.status);
@@ -38,7 +40,7 @@ function Account() {
 
   const updateUsername = async () => {
     try {
-      const response = await fetch(`/account`, {  // Update the endpoint to '/users'
+      const response = await fetch('/users', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +64,7 @@ function Account() {
 
   const updatePassword = async () => {
     try {
-      const response = await fetch(`/account`, {  // Update the endpoint to '/users'
+      const response = await fetch('/users', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -39,33 +39,32 @@ def login_required(f):
 
 @app.route('/')
 def index():
-    return '<h1>Trick-or-Treatster</h1>'
+    return '<h1>GOBLIFY</h1>'
 
-
-class Account(Resource):
+class Users(Resource):
+    def get(self):
+        users = User.query.all()
+        user_list = [user.to_dict() for user in users]
+        return jsonify(user_list)
+    
+class UserById(Resource):
     @login_required
     def patch(self, user):
         data = request.get_json()
         if not data:
             return make_response(jsonify({'error': 'Invalid request data'}), 400)
-
         if 'username' in data:
             new_username = data['username']
             user.username = new_username
-
         if 'password' in data:
             new_password = data['password']
             hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
             user.password = hashed_password
-
         db.session.commit()
-
         return make_response(jsonify({'message': 'Account updated successfully'}), 200)
-
     @login_required
     def get(self, user):
         return jsonify(user.to_dict())
-
 
 class Signup(Resource):
     def post(self):
@@ -141,7 +140,13 @@ class GobJokeByDay(Resource):
         if joke:
             return jsonify(joke.to_dict())
         return jsonify({'error': 'No GobJoke. Why not?'})
-   
+    
+class GobJokes(Resource):
+    def get(self):
+        gobjokes = GobJoke.query.all()
+        gobjoke_list = [gobjoke.to_dict() for gobjoke in gobjokes]
+        return jsonify(gobjoke_list)
+    
 class Worblins(Resource):
     def get(self):
         worblins = Worblin.query.all()
@@ -154,7 +159,10 @@ class Letters(Resource):
         letter_list = [letter.to_dict() for letter in letters]
         return jsonify(letter_list)
 
-
+class Users(Resource):
+    @login_required
+    def get(self, user):
+        return make_response(jsonify({}), 200)
     
     
 # class UserWorblin(Resource):
@@ -166,10 +174,12 @@ class Letters(Resource):
         # return jsonify(user_worblins_data)
 
 api.add_resource(GobJokeByDay, '/gobjokes/<int:day>')
+api.add_resource(GobJokes, '/gobjokes')
 api.add_resource(Worblins, '/worblins')
 api.add_resource(Bloodlogin, '/bloodlogin')
 api.add_resource(Bloodlogout, '/bloodlogout')
-api.add_resource(Account, '/account')
+api.add_resource(Users, '/users')
+api.add_resource(UserById, '/users/<int:id>')
 api.add_resource(Signup, '/signup')
 api.add_resource(Letters, '/letters')
 api.add_resource(CheckLoginStatus, '/check-login-status')
