@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import dungeonWallImage from '../assets/dungeonWall.png';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
-import './Splasm.css';
 
 
 const About = () => {

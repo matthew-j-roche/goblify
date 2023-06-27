@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import { useAuth } from '../Contexts/AuthContext'
 import { NavLink, useNavigate } from 'react-router-dom';
-import accountImage from '../assets/accountSmall.png';
-import tombImage from '../assets/tombSmall.png';
-import bloodLogoutImage from '../assets/bloodLogoutSmall.png';
-import bloodLoginImage from '../assets/bloodLoginSmall.png';
-import settingsImage from '../assets/settingsSmall.png';
-import aboutImage from '../assets/aboutSmall.png';
-
-
 
 function NavBar({ loggedIn, setLoggedIn }) {
+  const {authUser,
+    setAuthUser,
+    isLoggedIn,
+    setIsLoggedIn} = useAuth()
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -22,7 +20,7 @@ function NavBar({ loggedIn, setLoggedIn }) {
 
         if (response.ok) {
           window.confirm('BloodLogged out successfully');
-          setLoggedIn(false);
+          setIsLoggedIn(false);
           navigate('/bloodlogin');
         } else {
           console.error('bloodloggedout inadequately.');
@@ -39,11 +37,10 @@ function NavBar({ loggedIn, setLoggedIn }) {
         <li className="navLi">
           <NavLink exact to="/tomb"><button className='navTomb'>Tomb</button></NavLink>
           <NavLink exact to="/bloodlogin"><button className='navBloodLogout'>Bloodlogin</button></NavLink>
-          <NavLink to="/profile"><button className='navProfile'>Profile</button></NavLink>
-          <NavLink to="/account"><button className='navAccount'>A c c t</button></NavLink>
+          <NavLink to="/account"><button className='navAccount'>Acount</button></NavLink>
           <NavLink to="/about"><button className='navAbout'>About</button></NavLink>
           <NavLink to="/worblin"><button className='navWorblin'>Worblin</button></NavLink>
-          <NavLink to="/"><button className='navBloodLogout'>Bloodlogout</button></NavLink>
+          <NavLink to="/"><button className='navBloodLogout'onClick={handleLogout}>Bloodlogout</button></NavLink>
         </li>
       </ul>
     </nav>
