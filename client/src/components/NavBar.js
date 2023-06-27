@@ -21,6 +21,7 @@ function NavBar({ loggedIn, setLoggedIn }) {
         if (response.ok) {
           window.confirm('BloodLogged out successfully');
           setIsLoggedIn(false);
+          setAuthUser(null);
           navigate('/bloodlogin');
         } else {
           console.error('bloodloggedout inadequately.');

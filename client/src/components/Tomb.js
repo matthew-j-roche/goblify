@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import GobJoke from './GobJoke';
 import './index.css';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
+import { useAuth } from '../Contexts/AuthContext';
 
 
 function Tomb() {
+  const {
+    authUser,
+    setAuthUser,
+    isLoggedIn,
+    setIsLoggedIn
+  } = useAuth()
+
+  console.log(authUser);
+  console.log(isLoggedIn);
 
   return (
     <div class="bodyDiv">

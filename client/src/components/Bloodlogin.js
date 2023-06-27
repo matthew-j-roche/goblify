@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../Contexts/AuthContext";
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
 
 function Bloodlogin({ onLogin }) {
+  const {
+    authUser,
+    isLoggedIn,
+    setAuthUser,
+    setIsLoggedIn
+  } = useAuth();
+  console.log(authUser);
+  console.log(isLoggedIn);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,6 +34,10 @@ function Bloodlogin({ onLogin }) {
       if (response.ok) {
         // Login was successful, trigger the onLogin callback
         onLogin();
+        setIsLoggedIn(true);
+        setAuthUser({
+          Name: username
+        })
         navigate("/tomb");
       } else {
         // Login failed, handle the error
