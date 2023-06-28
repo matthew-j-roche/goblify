@@ -6,7 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from datetime import date
-from models import db, User, UserLocation, GobJoke, Worblin, Letter
+from models import db, User, GobJoke, Worblin, Letter, UserWorblin
 from config import app, db
 from datetime import datetime
 
@@ -46,10 +46,10 @@ class Users(Resource):
         users = User.query.all()
         user_list = [user.to_dict() for user in users]
         return jsonify(user_list)
-    
+
 class UserById(Resource):
-    @login_required
-    def patch(self, user):
+    def patch(self, id):  # Accept user ID as a parameter
+        user = User.query.get(id)  # Fetch the user by ID
         data = request.get_json()
         if not data:
             return make_response(jsonify({'error': 'Invalid request data'}), 400)
@@ -62,8 +62,9 @@ class UserById(Resource):
             user.password = hashed_password
         db.session.commit()
         return make_response(jsonify({'message': 'Account updated successfully'}), 200)
-    @login_required
-    def get(self, user):
+
+    def get(self, id):
+        user = User.query.get(id)
         return jsonify(user.to_dict())
 
 class Signup(Resource):
@@ -104,7 +105,7 @@ class Bloodlogin(Resource):
 
         session['user_id'] = user.id
 
-        return make_response(jsonify({'message': 'User bloodloggedin successfully'}), 200)
+        return make_response(jsonify(user.to_dict()), 200) 
 
 
 class Bloodlogout(Resource):
@@ -125,33 +126,20 @@ class CheckLoginStatus(Resource):
         
   # Retrieve the authenticated userter_by(user_id=user.id).all() for ug in user_games]
 
-class UserLocations(Resource):
-    @login_required
-    def get(self, user):
-        user = get_authenticated_user()  # Retrieve the authenticated user
-        user_locations = UserLocation.query.filter_by(user_id=user.id).all()
-        user_locations_data = [ul.to_dict() for ul in user_locations]
-        return jsonify(user_locations_data)
-    
-class GobJokeByDay(Resource):
-    today = datetime.today().day
-    def get(self, day):
-        joke = GobJoke.query.get(day)
-        if joke:
-            return jsonify(joke.to_dict())
-        return jsonify({'error': 'No GobJoke. Why not?'})
-    
+
 class GobJokes(Resource):
     def get(self):
         gobjokes = GobJoke.query.all()
         gobjoke_list = [gobjoke.to_dict() for gobjoke in gobjokes]
         return jsonify(gobjoke_list)
     
+
 class Worblins(Resource):
     def get(self):
         worblins = Worblin.query.all()
         worblin_list = [worblin.to_dict() for worblin in worblins]
         return jsonify(worblin_list)   
+
 
 class Letters(Resource):
     def get(self):
@@ -159,21 +147,35 @@ class Letters(Resource):
         letter_list = [letter.to_dict() for letter in letters]
         return jsonify(letter_list)
 
-class Users(Resource):
-    @login_required
-    def get(self, user):
-        return make_response(jsonify({}), 200)
     
-    
-# class UserWorblin(Resource):
-    # @login_required
-    # def get(self, user):
-        # user = get_authenticated_user()
-        # user_worblins = UserWorblin.query.filter_by(user_id=user.id).all()
-        # user_worblins_data = [uw.to_dict() for uw in user_worblins]
-        # return jsonify(user_worblins_data)
 
-api.add_resource(GobJokeByDay, '/gobjokes/<int:day>')
+class UserWorblins(Resource):
+    def get(self, user):
+    # Your implementation to get authenticated user by user parameter
+
+        user_worblins = UserWorblin.query.filter_by(user_id=user.id).all()
+        user_worblins_data = [uw.to_dict() for uw in user_worblins]
+        return jsonify(user_worblins_data)
+
+    def post(self):
+        data = request.get_json()
+        worblin_id = data['worblin_id']
+        user_id = data['user_id']
+        guesses = data['guesses']
+
+        existing_game = UserWorblin.query.filter_by(worblin_id=worblin_id, user_id=user_id).first()
+        if existing_game:
+            return {'message': 'You have already played this game.'}, 400
+    
+        # Create a new UserWorblin object and save it to the database
+        user_worblin = UserWorblin(worblin_id=worblin_id, user_id=user_id, guesses=guesses)
+        db.session.add(user_worblin)
+        db.session.commit()
+    
+        return {'message': 'Game saved successfully'}
+
+
+
 api.add_resource(GobJokes, '/gobjokes')
 api.add_resource(Worblins, '/worblins')
 api.add_resource(Bloodlogin, '/bloodlogin')
@@ -183,8 +185,8 @@ api.add_resource(UserById, '/users/<int:id>')
 api.add_resource(Signup, '/signup')
 api.add_resource(Letters, '/letters')
 api.add_resource(CheckLoginStatus, '/check-login-status')
-# api.add_resource(UserWorblin, '/user-worblins')
-api.add_resource(UserLocations, '/user-locations')
+api.add_resource(UserWorblins, '/user-worblins')
+
 
 
 if __name__ == '__main__':
