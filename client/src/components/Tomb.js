@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GobJoke from './GobJoke';
 import './index.css';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
@@ -6,6 +6,10 @@ import { useAuth } from '../Contexts/AuthContext';
 
 
 function Tomb() {
+  const [solution, setSolution] = useState(null)
+  const [title, setTitle] = useState(null)
+  const [q, setQ] = useState(null)
+  const [a, setA] = useState(null)
   const {
     authUser,
     setAuthUser,
@@ -13,8 +17,32 @@ function Tomb() {
     setIsLoggedIn
   } = useAuth()
 
+  const today = new Date().getDate()
+
   console.log(authUser);
   console.log(isLoggedIn);
+
+  useEffect(() => {
+    fetch('http://localhost:4000/gobjokes')
+        .then(res => res.json())
+        .then(json => {
+            const todayGobJoke = json.find(g => g.id === today)
+            console.log(todayGobJoke)
+            setQ(todayGobJoke.q)
+            setA(todayGobJoke.a)
+        })
+    }, [])
+
+    useEffect(() => {
+      fetch('http://localhost:4000/worblins')
+          .then(res => res.json())
+          .then(json => {
+              const todayWorblin = json.find(w => w.id === today)
+              console.log(todayWorblin)
+              setSolution(todayWorblin.word)
+              setTitle(todayWorblin.title)
+          })
+      }, [])
 
   return (
     <div class="bodyDiv">
@@ -27,12 +55,12 @@ function Tomb() {
             </div>
           </div>
         </div>
-        <div class="box2">
+        <div class="box2">Welcome back, {authUser.first_name}...
         <details className='details'>
              <summary>
-               <em>'Why don’t mummies take time off?'</em>
+               <em>{q}</em>
              </summary>
-             <em>'They're afraid to unwind'</em>
+             <em>{a}</em>
            </details>
           {/* <GobJoke /> */}
         </div>
@@ -41,7 +69,7 @@ function Tomb() {
         <div class="mainColumn1">
           <div class="gridDiv">
             <div class="grid2">
-              <div class="box box3">Worblin. 6/22: "Shhhh! Satan's Sleeping in the Next Room..."</div>  
+              <div class="box box3">Today's Worblin: {title}</div>  
               <div class="box box5">5</div>  
               <div class="box box6">Box 6</div>  
               <div class="box box7">Box 7</div>  

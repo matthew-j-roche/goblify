@@ -6,8 +6,8 @@ function Modal({ isCorrect, solution, turn }) {
     <div className="modal">
       {isCorrect && (
         <div>
-          <h1 className="solution">YES, {solution}</h1>
-          <p>You found the solution in {turn}</p>
+          <h1 className="solution">You did it...</h1>
+          <p>It took you {turn} guesses</p>
         </div>
       )}
       {!isCorrect && (

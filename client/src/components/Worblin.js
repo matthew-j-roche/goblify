@@ -2,8 +2,18 @@ import { useEffect, useState } from 'react'
 import WorblinGame from './Worblin/WorblinGame'
 import './worblin.css'
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
+import { useAuth } from '../Contexts/AuthContext';
 
 function Worblin() {
+    const {
+        authUser,
+        setAuthUser,
+        isLoggedIn,
+        setIsLoggedIn
+    } = useAuth()
+    console.log(authUser);
+    console.log(isLoggedIn);
+
     const [solution, setSolution] = useState(null)
     const [title, setTitle] = useState(null)
     // today = date.today().day
@@ -13,7 +23,6 @@ function Worblin() {
         fetch('http://localhost:4000/worblins')
             .then(res => res.json())
             .then(json => {
-            // random int between 0 & 14
                 const todayWorblin = json.find(w => w.id === today)
                 console.log(todayWorblin)
                 setSolution(todayWorblin.word)
@@ -26,9 +35,9 @@ function Worblin() {
             <div className="grid1">
                 <div className="box1">
                     <div className="box1box">
-                        <div className="box1a"><h1>box1a</h1></div>
+                        <div className="box1a"><h1></h1></div>
                         <div className="box1b">Worblin</div>  
-                        <div className="box1c"><h1>box1c</h1></div>
+                        <div className="box1c"><h1></h1></div>
                     </div>
                 </div>
                 <div className='box2'><div class="box2Worblin">today's puzzle: { title }</div></div>

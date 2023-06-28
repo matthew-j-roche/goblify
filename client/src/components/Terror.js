@@ -1,18 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import dungeonWallImage from '../assets/dungeonWall.png';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
+import { useAuth } from '../Contexts/AuthContext';
 
 
 function Terror() {
+  const { id } = useParams();
+  // const {
+    // authUser,
+    // setAuthUser,
+    // isLoggedIn,
+    // setIsLogged
+  // } = useAuth()
+  // console.log(authUser);
+  // console.log(isLoggedIn);
+
   return (
     <div className='bodyDiv'>
         <div className="grid1">
             <div className="box1">
                 <div className="box1box">
-                    <div className="box1a"><h1>box1a</h1></div>
+                    <div className="box1a"><h1></h1></div>
                     <div className="box1b">Goblify</div>  
-                    <div className="box1c"><h1>box1c</h1></div>
+                    <div className="box1c"><h1></h1></div>
                 </div>
             </div>
             <div className='box2'>P L E A S E  S T O P !!</div>

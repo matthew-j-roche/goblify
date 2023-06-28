@@ -114,8 +114,8 @@ h1 {
   transition: all 0.3s ease-in;
 }
 .modal {
-  font-family: 'Olde English', sans-serif;
-  font-size: 3em;
+  font-family: 'Creepster', sans-serif;
+  font-size: 2em;
   background: transparent;
   position: fixed;
   width: 100%;
@@ -125,7 +125,7 @@ h1 {
 }
 .modal div {
   width: 40%;
-  background: #fff;
+  background: repeating-radial-gradient(closest-side, #ff004c, #333, #f69d3c);
   padding: 20px;
   padding-left: 40px;
   border-radius: 32px;
@@ -136,7 +136,7 @@ h1 {
   box-shadow: 12px 12px 28px orange
 }
 .modal .solution {
-  color: #ff004c;
+  color: black;
   font-weight: bold;
   font-size: 0.8em;
   text-transform: uppercase;

@@ -32,15 +32,15 @@ function Bloodlogin({ onLogin }) {
       });
 
       if (response.ok) {
+        const userData = await response.json();
+        console.log(userData)
+        setAuthUser(userData)
+        console.log(authUser)
         // Login was successful, trigger the onLogin callback
         onLogin();
         setIsLoggedIn(true);
-        setAuthUser({
-          Name: username
-        })
         navigate("/tomb");
       } else {
-        // Login failed, handle the error
         throw new Error("Login failed. Please check your credentials.");
       }
     } catch (error) {
@@ -50,7 +50,6 @@ function Bloodlogin({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     handleLogin();
   };
 

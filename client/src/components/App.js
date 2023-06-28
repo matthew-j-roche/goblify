@@ -46,9 +46,9 @@ function App() {
         <Route path="/account" element={ isLoggedIn ? ( <Account username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/tomb" element={ isLoggedIn ? ( <Tomb username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/about" element={<About />} />
-        <Route path="/worblin" element={<Worblin />} />
+        <Route path="/worblin" element={ isLoggedIn ? ( <Worblin username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/terror" element={<Terror />} /> 
-        {/* Render 404 page for all other routes */}
+        <Route path="*" element={<Terror />} />
       </Routes>
       
     </>

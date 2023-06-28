@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { AuthProvider } from '../Contexts/AuthContext';
+import { useAuth } from '../Contexts/AuthContext';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
 
 
 function Account() {
-  const [user, setUser] = useState(null);
   const [showNewUsernameInput, setShowNewUsernameInput] = useState(false);
   const [showNewPasswordInput, setShowNewPasswordInput] = useState(false);
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
+
+
+  const {
+    authUser,
+    setAuthUser,
+    isLoggedIn,
+    setIsLoggedIn
+  } = useAuth()
+  console.log(authUser);
+  console.log(isLoggedIn);
 
   useEffect(() => {
     fetchUser();
@@ -16,11 +25,11 @@ function Account() {
 
   const fetchUser = async () => {
     try {
-      const response = await fetch('/users');
+      const response = await fetch(`/users/${authUser.id}`);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        setUser(data);
+        setAuthUser(data); // Update the authenticated user state
+        setIsLoggedIn(true); // Update the login status
       } else {
         console.log('Error fetching user:', response.status);
       }
@@ -40,7 +49,7 @@ function Account() {
 
   const updateUsername = async () => {
     try {
-      const response = await fetch('/users', {
+      const response = await fetch(`/users/${authUser.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +73,7 @@ function Account() {
 
   const updatePassword = async () => {
     try {
-      const response = await fetch('/users', {
+      const response = await fetch(`/users/${authUser.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -102,10 +111,9 @@ function Account() {
         <div className="agDiv1"><div className='agDiv1Sub'>
           <div className="accountDiv1">
             <div className="accountDiv2">
-              {user ? (
+              {authUser ? (
                 <div>
-                  <h1 className="accounth1"><div className="accountDiv3">{user.username}</div>User Information</h1>
-                  <p><strong>Username:</strong> {user.username}</p>
+                  <p><strong>Username:</strong> {authUser.username}</p>
                   <div className="text-center">
                     {showNewUsernameInput ? (
                       <div>
@@ -138,8 +146,8 @@ function Account() {
                       <button className="accountNewPasswordButton" onClick={() => setShowNewPasswordInput(true)}>Change Password</button>
                     )}
                   </div>
-                  <p><strong>Name:</strong> {user.first_name} {user.last_name}</p>
-                  <p><strong>Created At:</strong> {user.created_at}</p>
+                  <p><strong>Name:</strong> {authUser.first_name} {authUser.last_name}</p>
+                  <p><strong>Created At:</strong> {authUser.created_at}</p>
                 </div>
               ) : (
                 <p className="accountLoading">Loading user information...</p>
