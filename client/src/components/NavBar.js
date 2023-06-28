@@ -50,25 +50,3 @@ function NavBar({ loggedIn, setLoggedIn }) {
 }
 
 export default NavBar;
-{/* <NavLink to="/bloodlogout"><img className="navIcon" alt="bloodlogout" onClick={handleLogout} src={"../assets/bloodLogoutSmall.png"}/></NavLink> */}
-{/* <NavLink t0="/worblin"></NavLink> */}
-{/* <NavLink to="/about"><img className="navIcon" alt="about" src={aboutImage}/></NavLink> */}
-{/* <NavLink to="/account"><img className="navIcon" alt="account" src={accountImage}/></NavLink> */}
-{/* <NavLink to="/profile"><img className="navIcon" alt="settings" src={settingsImage}/></NavLink> */}
-{/* <NavLink exact to="/home"><img className="navIcon" alt='home' src={tombImage}/></NavLink> */}
-// }
-// );
-    // </nav>
-    // </ul>
-        // </li>
-        // <NavLink to="/bloodlogout"><button className='navBloodLogut'>X/.-._X.X-.</button></NavLink>
-        // <NavLink t0="/worblin"><button className='navWorblin'>.-._X-./ /-XX</button></NavLink>
-        // <NavLink to="/about"><button className='navAbout'>///X.-X-._X-/-L</button></NavLink>
-        // <NavLink to="/account"><button className='navAccount'>/X.-X-._L0/-XX-/</button></NavLink>
-        // <NavLink to="/profile"><button className='navProfile'>.-X-._LL/0L_/</button></NavLink>
-        // <NavLink exact to="/tomb"><button className='navTomb'>X-._LL// 0..L_/-</button></NavLink>
-        // <li className="navLi">
-      {/* <ul className="navUl"> */}
-          {/* <nav className='nav'> */}
-          {/* return ( */}
-          {/* }; */}

@@ -86,7 +86,10 @@ class GobxamQuestion(db.Model, SerializerMixin):
    __tablename__ = 'gobxam_questions'
    id = db.Column(db.Integer, primary_key=True)
    question = db.Column(db.Text)
-   choices = db.Column(db.Text)
+   choice1 = db.Column(db.Text)
+   choice2 = db.Column(db.Text)
+   choice3 = db.Column(db.Text)
+   choice4 = db.Column(db.Text)
    correct_answer = db.Column(db.String(255))
    day_of_month = db.Column(db.Integer)
 
@@ -94,7 +97,10 @@ class GobxamQuestion(db.Model, SerializerMixin):
       return {
          'id': self.id,
          'question': self.question,
-         'choices': self.choices,
+         'choice1': self.choice1,
+         'choice2': self.choice2,
+         'choice3': self.choice3,
+         'choice4': self.choice4,
          'correct_answer': self.correct_answer
    }
 

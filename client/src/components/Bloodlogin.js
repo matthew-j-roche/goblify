@@ -58,9 +58,9 @@ function Bloodlogin({ onLogin }) {
       <div className="grid1">
         <div className="box1">
           <div className="box1box">
-            <div className="box1a"><h1>box1a</h1></div>
+            <div className="box1a">???</div>
             <div className="box1b">Bloodlogin</div>  
-            <div className="box1c"><h1>box1c</h1></div>
+            <div className="box1c">?????</div>
           </div>
         </div>
         <div className='box2'>Goblify</div>

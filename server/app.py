@@ -6,9 +6,9 @@ from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from datetime import date
-from models import db, User, GobJoke, Worblin, Letter, UserWorblin
+from models import db, User, GobJoke, Worblin, Letter, UserWorblin, GobxamQuestion, UserGobxam
 from config import app, db
-from datetime import datetime
+from datetime import date
 
 
 
@@ -178,6 +178,49 @@ class UserWorblinsById(Resource):
         user_worblins_data = [uw.to_dict() for uw in user_worblins]
         return jsonify(user_worblins_data)
 
+class GobxamQuestions(Resource):
+    def get(self):
+        today = date.today()
+        day_of_month = today.day
+
+        questions = GobxamQuestion.query.filter_by(day_of_month=day_of_month).all()
+        if questions:
+            questions_list = [question.to_dict() for question in questions]
+            return jsonify(questions_list)
+        else:
+            return jsonify({'message': 'No questions found for the current day.'}), 404
+
+
+class UserGobxams(Resource):
+    def get(self, user_id):
+        user_gobxams = UserGobxam.query.filter_by(user_id=user_id).all()
+        user_gobxams_data = [ug.to_dict() for ug in user_gobxams]
+        return jsonify(user_gobxams_data)
+
+    def post(self):
+        data = request.get_json()
+        user_id = data['user_id']
+        score = data.get('score')
+
+        gobxam_date = datetime.now().date()
+
+        existing_gobxam = UserGobxam.query.filter_by(user_id=user_id, gobxam_date=gobxam_date).first()
+        if existing_gobxam:
+            return {'message': 'You have already taken the Gobxam for today.'}, 400
+
+        user_gobxam = UserGobxam(user_id=user_id, gobxam_date=gobxam_date, score=score)
+        db.session.add(user_gobxam)
+        db.session.commit()
+
+        return {'message': 'Gobxam score saved successfully'}, 201
+
+class UserGobxamsById(Resource):
+    def get(self, user_id):
+        user_gobxams = UserGobxam.query.filter_by(user_id=user_id).all()
+        user_gobxams_data = [ug.to_dict() for ug in user_gobxams]
+        return jsonify(user_gobxams_data)
+
+
 api.add_resource(GobJokes, '/gobjokes')
 api.add_resource(Worblins, '/worblins')
 api.add_resource(Bloodlogin, '/bloodlogin')
@@ -189,6 +232,10 @@ api.add_resource(Letters, '/letters')
 api.add_resource(CheckLoginStatus, '/check-login-status')
 api.add_resource(UserWorblins, '/user-worblins')
 api.add_resource(UserWorblinsById, '/user-worblins/<int:user_id>')
+api.add_resource(GobxamQuestions, '/gobxam-questions')
+api.add_resource(UserGobxams, '/user-gobxams')
+api.add_resource(UserGobxamsById, '/user-gobxams/<int:user_id>')
+
 
 
 

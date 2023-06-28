@@ -50,10 +50,9 @@ function Tomb() {
       <div class="grid1">
         <div class="box1">
           <div class="box1box">
-            <div class="box1a"><h1></h1></div>
+            <div class="box1a">???</div>
             <div class="box1b">Goblify</div>  
-            <div class="box1c">
-            </div>
+            <div class="box1c">?????</div>
           </div>
         </div>
         <div class="box2">Welcome back, {authUser.first_name}...
@@ -71,8 +70,8 @@ function Tomb() {
           <div class="gridDiv">
             <div class="grid2">
               <div class="box box3">Today's Worblin: {title}</div>
-              <div class="box box6">Box 6</div>  
-              <div class="box box7">Box 7</div>  
+              <div class="box box6">How big is your brain? Find out with today's Cobxam</div>  
+              <div class="box box7">How've you been doing? Find out with Count Draculanalytics</div>  
             </div>
           </div>
         </div>
