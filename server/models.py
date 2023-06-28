@@ -81,3 +81,34 @@ class Letter(db.Model, SerializerMixin):
       return {
          'key': self.key
    }
+
+class GobxamQuestion(db.Model, SerializerMixin):
+   __tablename__ = 'gobxam_questions'
+   id = db.Column(db.Integer, primary_key=True)
+   question = db.Column(db.Text)
+   choices = db.Column(db.Text)
+   correct_answer = db.Column(db.String(255))
+   day_of_month = db.Column(db.Integer)
+
+   def to_dict(self):
+      return {
+         'id': self.id,
+         'question': self.question,
+         'choices': self.choices,
+         'correct_answer': self.correct_answer
+   }
+
+class UserGobxam(db.Model, SerializerMixin):
+   __tablename__ = 'user_gobxams'
+   id = db.Column(db.Integer, primary_key=True)
+   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+   gobxam_date = db.Column(db.Date, nullable=False)
+   score = db.Column(db.Integer)
+
+   def to_dict(self):
+      return {
+         'id': self.id,
+         'user_id': self.user_id,
+         'gobxam_date': self.gobxam_date,
+         'score': self.score
+   }

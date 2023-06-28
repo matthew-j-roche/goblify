@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GobJoke from './GobJoke';
 import './index.css';
 import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
@@ -23,7 +24,7 @@ function Tomb() {
   console.log(isLoggedIn);
 
   useEffect(() => {
-    fetch('http://localhost:4000/gobjokes')
+    fetch('/gobjokes')
         .then(res => res.json())
         .then(json => {
             const todayGobJoke = json.find(g => g.id === today)
@@ -34,7 +35,7 @@ function Tomb() {
     }, [])
 
     useEffect(() => {
-      fetch('http://localhost:4000/worblins')
+      fetch('/worblins')
           .then(res => res.json())
           .then(json => {
               const todayWorblin = json.find(w => w.id === today)
@@ -69,14 +70,9 @@ function Tomb() {
         <div class="mainColumn1">
           <div class="gridDiv">
             <div class="grid2">
-              <div class="box box3">Today's Worblin: {title}</div>  
-              <div class="box box5">5</div>  
+              <div class="box box3">Today's Worblin: {title}</div>
               <div class="box box6">Box 6</div>  
               <div class="box box7">Box 7</div>  
-              <div class="box box8">8</div>  
-              <div class="box box9">Box 9</div>  
-              {/* <div class="box box10">Box 10</div>   */}
-              {/* <div class="box box11">11</div>   */}
             </div>
           </div>
         </div>

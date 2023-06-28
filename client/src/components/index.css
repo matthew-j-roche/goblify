@@ -36,22 +36,23 @@ body {
 }
 
 .mainColumns {
-  width: 95%;
+  width: 90%;
   display: flex;
   flex-direction: row;
-  outline: 4px solid black;
+  /* outline: 4px solid black; */
   margin-left: 2%;
   border-radius: .5em;
-  background-color:#ff4523
+  background-color: black;
 }
 
 .mainColumn1 {
-  width: 64%;
+  width: 70%;
   background: linear-gradient(270deg, orange, #fc633d, #ee2054, black);
 }
 
 .mainColumn2 {
   width: 30%;
+  margin-top: 1%;
   background-color: black;
 }
 
@@ -96,12 +97,12 @@ body {
 }
 
 .grid1 {
-  width: 100%;
+  width: 90%;
   height: 100%;
   /* background: linear-gradient(270deg, orange, #fc633d, #ee2054, black); */
   display: grid;
   border-radius: 16px;
-  grid-template-columns: 28% 43% 23%;
+  grid-template-columns: 38% 62%;
   grid-auto-rows: minmax(1em, auto);
   justify-items: stretch;
   align-items: center;
@@ -114,7 +115,7 @@ body {
   /* border: 4px double black; */
   background-color: transparent;
   display: grid;
-  grid-template-columns: 28% 58% 8%;
+  grid-template-columns: 39% 58%;
   grid-auto-rows: minmax(1em, auto);
   justify-items: stretch;
   align-items: center;
@@ -122,8 +123,8 @@ body {
   align-self: center;
   row-gap: 25%;
   margin-top: 8%;
-  margin-left: -3%; 
-  margin-right: -2%; 
+  /* margin-left: -3%;  */
+  margin-right: 4%; 
   column-gap: 3%;;
 }
 
@@ -151,7 +152,7 @@ body {
 }
 
 .tombPaz1 {
-  width: 45%;
+  width: 100%;
   height: auto;
   margin-top: 4em;
   margin-left: 3em;
@@ -265,25 +266,16 @@ box1cAbout {
   background-color: #ff4523;
 }
 
-.box4 {
-  background-color: #fb1a68;
-}
-
-.box5 {
-  background-color: #ffb558;
-}
-
 .box6 {
-  background-color: #ee2054;
+  grid-column: 1/3;
+  background-color: #ffb558;
 }
 
 .box7 {
+  grid-column: 1/3;
   background-color: #fb1a68;
 }
 
-.box8 {
-  background-color: #ffb558;
-}
 
 .box9 {
   background-color: #e4188b;
@@ -491,8 +483,8 @@ white, #ffb558);
 
 .accountGrid {
   font-size: 2em;
-  width: 90%;
-  outline: 16px solid black;
+  width: 100%;
+  outline: 8px solid black;
   display: grid;
   grid-template-columns: 70% 30%;
   border-top-right-radius: 1em;
@@ -509,6 +501,19 @@ white, #ffb558);
   width: 100%;
   height: 100%;
   background-image: url("../assets/dungeonWall.png");
+}
+
+.agDiv1SubUser {
+  background-color: black;
+  border-radius: 1em;
+  margin-top: 4%;
+  margin-right: 10%;
+  padding: 1em;
+  font-size: .8em;
+  font-family: 'Limelight', cursive;
+  color: #ee2054;
+  width: 70%;
+  height: 70%;
 }
 
 .accountForm {
@@ -556,15 +561,15 @@ white, #ffb558);
 
 .accPaz2 {
   padding: 3em;
-  margin: -4em;
+  /* margin: -4em; */
   width: auto;
   height: auto;
-  animation: accPaz2Animation 2s infinite linear;
+  animation: accPaz2Animation 8s infinite linear;
 }
 
 @keyframes accPaz2Animation {
   0% { opacity: 1 }
-  50% { opacity: 0.5 }
+  10% { opacity: 0.1 }
   100% { opacity: 1 }
 }
 
@@ -582,7 +587,7 @@ white, #ffb558);
   }
 
 .accPaz4 {
-    width: auto;
+    width: 100%;
     height: auto;
     margin: 2em;
     transform: translateX(3em);
@@ -591,7 +596,7 @@ white, #ffb558);
 
 @keyframes accPaz4Animation {
   0% { transform: translateX(0) }
-  100% { transform: translateX(300px) rotateZ(360deg) }
+  100% { transform: translateX(0) rotateZ(360deg) }
 }
 
 .accPaz5 {

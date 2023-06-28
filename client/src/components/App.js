@@ -6,9 +6,11 @@ import Bloodlogin from './Bloodlogin';
 import About from './About';
 import Terror from './Terror';
 import Worblin from './Worblin';
+import Gobxam from './Gobxam';
 import Signup from './Signup';
 import Tomb from './Tomb';
 import Account from './Account';
+import Draculanalytics from './Draculanalytics';
 
 
 function App() {
@@ -47,6 +49,8 @@ function App() {
         <Route path="/tomb" element={ isLoggedIn ? ( <Tomb username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/about" element={<About />} />
         <Route path="/worblin" element={ isLoggedIn ? ( <Worblin username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
+        <Route path="/gobxam" element={ isLoggedIn ? ( <Gobxam username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
+        <Route path="/draculanalytics" element={ isLoggedIn ? ( <Draculanalytics username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/terror" element={<Terror />} /> 
         <Route path="*" element={<Terror />} />
       </Routes>

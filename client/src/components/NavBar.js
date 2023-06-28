@@ -40,6 +40,8 @@ function NavBar({ loggedIn, setLoggedIn }) {
           <NavLink to="/account"><button className='navAccount'>Account</button></NavLink>
           <NavLink to="/about"><button className='navAbout'>About</button></NavLink>
           <NavLink to="/worblin"><button className='navWorblin'>Worblin</button></NavLink>
+          <NavLink to="/gobxam"><button className='navWorblin'>Gobxam</button></NavLink>
+          <NavLink to="/draculanalytics"><button className='navWorblin'>Drac</button></NavLink>
           <NavLink to="/"><button className='navBloodLogout'onClick={handleLogout}>Bloodlogout</button></NavLink>
         </li>
       </ul>

@@ -100,20 +100,19 @@ function Account() {
       <div className="grid1">
         <div className="box1">
           <div className="box1box">
-            <div className="box1a"><h1>box1a</h1></div>
+            <div className="box1a"><h1></h1></div>
             <div className="box1b">Account</div>  
-            <div className="box1c"><h1>box1c</h1></div>
+            <div className="box1c"><h1></h1></div>
           </div>
         </div>
-        <div className='box2'>Goblify</div>
+        <div className='box2'>We're watching you, {authUser.first_name}...</div>
       </div>  
       <div className="accountGrid">
-        <div className="agDiv1"><div className='agDiv1Sub'>
-          <div className="accountDiv1">
-            <div className="accountDiv2">
-              {authUser ? (
-                <div>
-                  <p><strong>Username:</strong> {authUser.username}</p>
+        <div className="agDiv1">
+          <div className='agDiv1Sub'>
+            <div className='agDiv1SubUser'>
+              <p><strong>Name:</strong> {authUser.first_name} {authUser.last_name}</p>
+              <p><strong>Username:</strong> {authUser.username}</p>
                   <div className="text-center">
                     {showNewUsernameInput ? (
                       <div>
@@ -146,17 +145,12 @@ function Account() {
                       <button className="accountNewPasswordButton" onClick={() => setShowNewPasswordInput(true)}>Change Password</button>
                     )}
                   </div>
-                  <p><strong>Name:</strong> {authUser.first_name} {authUser.last_name}</p>
-                  <p><strong>Created At:</strong> {authUser.created_at}</p>
+                  <p><strong>Account Created:</strong> {authUser.created_at}</p>
                 </div>
-              ) : (
-                <p className="accountLoading">Loading user information...</p>
-              )}
             </div>
           </div>
-        </div></div>
         <div className="agDiv2"><div className="agDiv2Sub">
-        <img src={pazuzuTransparentImage} className='accPaz1'/>  
+        {/* <img src={pazuzuTransparentImage} className='accPaz1'/>   */}
         <img src={pazuzuTransparentImage} className='accPaz2'/>  
         </div></div>
       </div>

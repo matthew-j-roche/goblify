@@ -151,8 +151,6 @@ class Letters(Resource):
 
 class UserWorblins(Resource):
     def get(self, user):
-    # Your implementation to get authenticated user by user parameter
-
         user_worblins = UserWorblin.query.filter_by(user_id=user.id).all()
         user_worblins_data = [uw.to_dict() for uw in user_worblins]
         return jsonify(user_worblins_data)
@@ -173,8 +171,12 @@ class UserWorblins(Resource):
         db.session.commit()
     
         return {'message': 'Game saved successfully'}
-
-
+    
+class UserWorblinsById(Resource):
+    def get(self, user_id):
+        user_worblins = UserWorblin.query.filter_by(user_id=user_id).all()
+        user_worblins_data = [uw.to_dict() for uw in user_worblins]
+        return jsonify(user_worblins_data)
 
 api.add_resource(GobJokes, '/gobjokes')
 api.add_resource(Worblins, '/worblins')
@@ -186,6 +188,7 @@ api.add_resource(Signup, '/signup')
 api.add_resource(Letters, '/letters')
 api.add_resource(CheckLoginStatus, '/check-login-status')
 api.add_resource(UserWorblins, '/user-worblins')
+api.add_resource(UserWorblinsById, '/user-worblins/<int:user_id>')
 
 
 
