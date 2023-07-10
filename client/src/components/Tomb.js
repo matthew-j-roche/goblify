@@ -19,6 +19,7 @@ function Tomb() {
   } = useAuth()
 
   const today = new Date().getDate()
+  const k = "A kraken's tentacles, strong and vast, /Wrap around a sea serpent, holding fast. /In the depths they reside, their love untold,/ Monstrous devotion, a tale of old."
 
   console.log(authUser);
   console.log(isLoggedIn);
@@ -58,9 +59,9 @@ function Tomb() {
         <div class="box2">Welcome back, {authUser.first_name}...
         <details className='details'>
              <summary>
-               <em>{q}</em>
+               <em>{"Kraken"}</em>
              </summary>
-             <em>{a}</em>
+             <em>{k}</em>
            </details>
           {/* <GobJoke /> */}
         </div>
@@ -69,9 +70,15 @@ function Tomb() {
         <div class="mainColumn1">
           <div class="gridDiv">
             <div class="grid2">
-              <div class="box box3">Today's Worblin: {title}</div>
-              <div class="box box6">How big is your brain? Find out with today's Cobxam</div>  
-              <div class="box box7">How've you been doing? Find out with Count Draculanalytics</div>  
+              <button class="box3">
+                <Link to="./worblin">Today's Worblin: {title}</Link>
+              </button>
+              <button class="box6">
+                <Link to="./cobxam">How big is your brain? Find out with today's Cobxam</Link>  
+              </button>
+              <button class="box7">
+                <Link to="./draculanalytics">How've you been doing? Find out with Count Draculanalytics</Link>
+              </button>  
             </div>
           </div>
         </div>

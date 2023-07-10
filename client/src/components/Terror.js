@@ -22,18 +22,18 @@ function Terror() {
             <div className="box1">
                 <div className="box1box">
                     <div className="box1a"><h1></h1></div>
-                    <div className="box1b">Goblify</div>  
+                    <div className="box1b">Goodblifye</div>  
                     <div className="box1c"><h1></h1></div>
                 </div>
             </div>
-            <div className='box2'>P L E A S E  S T O P !!</div>
+            <div className='box2'>P L E A S E  S T O P !!  D O N " T G O ! </div>
         </div>  
         <div className="accountGrid">
             <div className="agDiv1"><div className='agDiv1Sub'>
-              <h1 className="terror4041">404 - Page Not Found</h1>
-              <h2 className="terror4042">The page you are looking for does not exist.</h2>
+              <h1 className="terror4041"></h1>
+              <h2 className="terror4042"></h2>
               < Link to="/tomb" className="terrorTombLink">
-                  <div className='goBackDiv'>Go Back!</div>
+                  <div className='goBackDiv'></div>
               </Link>
             </div></div>
             <div className="agDiv2"><div className="agDiv2Sub">

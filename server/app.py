@@ -6,7 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from datetime import date
-from models import db, User, GobJoke, Worblin, Letter, UserWorblin, GobxamQuestion, UserGobxam
+from models import db, User, GobJoke, Dracquote, Worblin, Letter, UserWorblin, GobxamQuestion, UserGobxam
 from config import app, db
 from datetime import date
 
@@ -66,6 +66,17 @@ class UserById(Resource):
     def get(self, id):
         user = User.query.get(id)
         return jsonify(user.to_dict())
+    
+
+    def delete(self, id):
+        user = User.query.get(id)
+        if not user:
+            return {'error': 'User not found'}, 404
+
+        db.session.delete(user)
+        db.session.commit()
+
+        return make_response(jsonify({'message': 'User deleted successfully'}), 200)
 
 class Signup(Resource):
     def post(self):
@@ -133,6 +144,18 @@ class GobJokes(Resource):
         gobjoke_list = [gobjoke.to_dict() for gobjoke in gobjokes]
         return jsonify(gobjoke_list)
     
+class Dracquotes(Resource):
+    def get(self):
+        dracquotes = Dracquote.query.all()
+        dracquote_list = [dracquote.to_dict() for dracquote in dracquotes]
+        return jsonify(dracquote_list)
+
+class DracquotesById(Resource):
+    def get(self, id):
+        dracquotes = Dracquote.query.filter_by(id=id).all()
+        dracquote_list = [dracquote.to_dict() for dracquote in dracquotes]
+        return jsonify(dracquote_list)
+    
 
 class Worblins(Resource):
     def get(self):
@@ -151,7 +174,7 @@ class Letters(Resource):
 
 class UserWorblins(Resource):
     def get(self, user):
-        user_worblins = UserWorblin.query.filter_by(user_id=user.id).all()
+        user_worblins = UserWorblin.query.all()
         user_worblins_data = [uw.to_dict() for uw in user_worblins]
         return jsonify(user_worblins_data)
 
@@ -192,14 +215,15 @@ class GobxamQuestions(Resource):
 
 
 class UserGobxams(Resource):
-    def get(self, user_id):
-        user_gobxams = UserGobxam.query.filter_by(user_id=user_id).all()
+    def get(self):
+        user_gobxams = UserGobxam.query.all()
         user_gobxams_data = [ug.to_dict() for ug in user_gobxams]
         return jsonify(user_gobxams_data)
 
     def post(self):
         data = request.get_json()
         user_id = data['user_id']
+        gobxam_id = data['gobxam_id']
         score = data.get('score')
 
         gobxam_date = datetime.now().date()
@@ -222,6 +246,8 @@ class UserGobxamsById(Resource):
 
 
 api.add_resource(GobJokes, '/gobjokes')
+api.add_resource(DracquotesById, '/dracquotes/<int:id>')
+api.add_resource(Dracquotes, '/dracquotes')
 api.add_resource(Worblins, '/worblins')
 api.add_resource(Bloodlogin, '/bloodlogin')
 api.add_resource(Bloodlogout, '/bloodlogout')

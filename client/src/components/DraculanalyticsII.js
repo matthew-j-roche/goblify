@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../Contexts/AuthContext';
-import pazuzuTransparentImage from "../assets/pazuzuTransparent2.png";
+import { useNavigate } from 'react-router-dom';
+import pazuzuTransparentImage from "../assets/pazuzuTransparent4.png";
 import { Bar, Chart } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto'
-import WorblinUserData from "./WorblinUserData";
-import GobxamUserData from "./GobxamUserData";
-import { useNavigate } from 'react-router-dom';
-import Dracquote from './Dracquote';
+import WorblinEtalData from "./WorblinEtalData";
+import GobxamEtalData from "./GobxamEtalData";
 
 
 
-function Draculanalytics() {
+function DraculanalyticsII() {
   const {
     authUser,
     setAuthUser,
@@ -24,7 +23,7 @@ function Draculanalytics() {
 
   function handleClick() {
     setChartDestroyed(true);
-    navigate('/draculanalyticsII');
+    navigate('/draculanalytics');
   }
 
   return (
@@ -34,23 +33,28 @@ function Draculanalytics() {
           <div class="box1box"><div className="box1b2">Count Draculanalytics</div></div>
         </div>
         <div className='box2'>
-          <Dracquote />
+          <details className='details'>
+            <summary>
+              <em>Why does The Count keep track of your scores?</em>
+            </summary>
+            <em>Remember my friend, that knowledge is stronger than memory, and we should not trust the weaker.</em>
+          </details>
         </div>
       </div>  
       <div className="accountGrid">
+        {/* <div className="agDiv1Et"> */}
         <div className="agDiv1">
           <div className='agDiv1SubCol'>
-          <div className="dracButtonDiv">
-            <button className="dracButtonEt" >{authUser.first_name}</button>
-            <button className="dracButton" onClick={handleClick}>Them</button>
+            <div className="dracButtonDiv">
+              <button className="dracButtonEt">them</button>
+              <button className="dracButton" onClick={handleClick}>{authUser.last_name}</button>
             </div>
-            <WorblinUserData />
-            <GobxamUserData />
+            <WorblinEtalData />
+            <GobxamEtalData />
           </div>
         </div>
         <div className="agDiv2">
           <div className="agDiv2Sub">
-            <img src={pazuzuTransparentImage} className='accPaz4'/>  
             <img src={pazuzuTransparentImage} className='accPaz4'/>  
           </div>
         </div>
@@ -59,4 +63,4 @@ function Draculanalytics() {
   );
 }
 
-export default Draculanalytics;
+export default DraculanalyticsII;

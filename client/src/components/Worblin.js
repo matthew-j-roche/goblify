@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import WorblinGame from './Worblin/WorblinGame'
 import './worblin.css'
-import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
+import pazuzuTransparentImage from "../assets/pazuzuTransparent3.png"
 import { useAuth } from '../Contexts/AuthContext';
 
 function Worblin() {
@@ -13,6 +13,8 @@ function Worblin() {
     } = useAuth()
     console.log(authUser);
     console.log(isLoggedIn);
+
+    const cc = "A chupacabra's hunger, fierce and wild Softens for a sasquatch gentle and mild. In the depths of the forest, their love blooms, Monstrous hearts entwined, defying all dooms.";
 
     const [solution, setSolution] = useState(null)
     const [title, setTitle] = useState(null)
@@ -31,25 +33,33 @@ function Worblin() {
         }, [])
 
     return (
-        <div className='bodyDiv'>
-            <div className="grid1">
-                <div className="box1">
-                    <div className="box1box">
-                        <div className="box1a"><h1></h1></div>
+        <div className='bodyDivxyz' style={{ width: '100%' }}>
+            <div className="grid1xyz"style={{ width: '100%' }}>
+                <div className="box1xyz"style={{ width: '100%' }}>
+                    <div className="box1box" style={{ width: '100%' }}>
+
                         <div className="box1b">Worblin</div>  
                         <div className="box1c"><h1></h1></div>
                     </div>
                 </div>
-                <div className='box2'><div class="box2Worblin">today's puzzle: { title }</div></div>
+                <div className='box2'>
+                <details className='details'>
+                    <summary>
+                        <em>Ha ha ha</em>
+                    </summary>
+                    <em>{cc}</em>
+                    </details>    
+                <div class="box2Worblin" style={{ width: '100%' }}>today's puzzle: { title }</div></div>
             </div>  
-            <div className="accountGrid">
-                <div className="agDiv1"><div className='agDiv1Sub'>
-                    <div className="worbMain">
+            <div className="accountGrid" style={{ width: '100%' }}>
+                <div className="agDiv1"><div className='agDiv1Sub' style={{ width: '100%' }}>
+                    <div className="worbMain" style={{ width: '100%' }}>
                         {solution && <WorblinGame solution={solution} />}
                     </div>
                 </div></div>
-                <div className="agDiv2"><div className="agDiv2Sub">
-                <img src={pazuzuTransparentImage} className='accPaz1'/>  
+                <div className="agDiv2" ><div className="agDiv2Sub" >
+                {/* <img src={pazuzuTransparentImage} className='accPaz1'/>   */}
+                <img src={pazuzuTransparentImage} className='accPaz2'/>  
                 <img src={pazuzuTransparentImage} className='accPaz2'/>  
                 </div></div>
             </div>

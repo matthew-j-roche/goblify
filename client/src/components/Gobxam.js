@@ -118,58 +118,80 @@ function Gobxam() {
     const addLeadingZero = (number) => (number > 9 ? number : `0${number}`)
   
     return (
-      <div className="quiz-container">
-        {!showResult ? (
-          <div>
-            <div>
-              <span className="active-question-no">
-                {addLeadingZero(activeQuestion + 1)}
-              </span>
-              <span className="total-question">
-                /{addLeadingZero(questions.length)}
-              </span>
-            </div>
-            <h2>{question}</h2>
-            <ul>
-              {choices.map((answer, index) => (
-                <li
-                  onClick={() => onAnswerSelected(answer, index)}
-                  key={answer}
-                  className={
-                    selectedAnswerIndex === index ? 'selected-answer' : null
-                  }
-                >
-                  {answer}
-                </li>
-              ))}
-            </ul>
-            <div className="flex-right">
-              <button
-                onClick={onClickNext}
-                disabled={selectedAnswerIndex === null}
-              >
-                {activeQuestion === questions.length - 1 ? 'Finish' : 'Next'}
-              </button>
+      <div className='bodyDiv'>
+        <div className="grid1"style={{ width: '50em' }}>
+          <div className="box1">
+            <div className="box1box" style={{ width: "100%" }}>
+              <div className="box1a">???</div>
+              <div className="box1b">Gobxam</div>  
+              <div className="box1c">?????</div>
             </div>
           </div>
-        ) : (
-          <div className="result">
-            <h3>Result</h3>
-            <p>
-              Total Question: <span>{questions.length}</span>
-            </p>
-            <p>
-              Total Score:<span> {result.score}</span>
-            </p>
-            <p>
-              Correct Answers:<span> {result.correctAnswers}</span>
-            </p>
-            <p>
-              Wrong Answers:<span> {result.wrongAnswers}</span>
-            </p>
-          </div>
-        )}
+          <div className='box2'>Goblify</div>
+        </div>  
+        <div className="accountGridx" >
+          {/* <div className="agDiv1x"><div className='agDiv1Sub'> */}
+                {/* <img src={pazuzuTransparentImage} className="tombPaz1" alt="Pazuzu's gotta secret!" style={{height: '40%', width:'auto'}}/> */}
+          <div className="loginDiv1x" style={{ backgroundColor: '#f45303' }}>
+              <div className="agDiv1x" style={{ borderRadius: '3em', padding: '.5em', margin: '1em' }}>
+                <div>
+                  {/* <div className="agDiv1SubUserEtx"> */}
+                    {!showResult ? (
+                      <div>
+                        <div>
+                          <span className="active-question-no">
+                            {addLeadingZero(activeQuestion + 1)}
+                          </span>
+                          <span className="total-question">
+                            /{addLeadingZero(questions.length)}
+                          </span>
+                        </div>
+                        <h2>{question}</h2>
+                        <ul>
+                          {choices.map((answer, index) => (
+                            <li 
+                            onClick={() => onAnswerSelected(answer, index)}
+                            key={answer}
+                            className={
+                              selectedAnswerIndex === index ? 'selected-answer' : null
+                            }
+                            >
+                              {answer}
+                            </li>
+                          ))}
+                        </ul>
+                        {/* <div className="flex-right"> */}
+                          <button className='dracButtonEt'
+                            onClick={onClickNext}
+                            disabled={selectedAnswerIndex === null}
+                          >
+                            {activeQuestion === questions.length - 1 ? 'Finish' : 'Next'}
+                          </button>
+                        {/* </div> */}
+                      </div>
+                    ) : (
+                      <div className="result" style={{ width: '800px' }}>
+                        <h3>Result</h3>
+                        <p>Total Question: <span>{questions.length}</span></p>
+                        <p>Total Score:<span> {result.score}</span></p>
+                        <p>Correct Answers:<span> {result.correctAnswers}</span></p>
+                        <p>Wrong Answers:<span> {result.wrongAnswers}</span></p>
+                      </div>
+                    )}
+                  </div>
+                {/* </div> */}
+              {/* </div> */}
+          {/* </div> */}
+                    <img src={pazuzuTransparentImage} className="tombPaz1" alt="Pazuzu's gotta secret!" style={{width: '80%'}}/>
+        </div>
+                 
       </div>
+      
+      
+      
+      
+    </div>
+  </div>
 )}
 
   export default Gobxam;

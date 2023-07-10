@@ -10,6 +10,7 @@ function Signup() {
     password: "",
   });
 
+  const ww = "In the depths of darkness love took its form A werewolfs heart with passion does swarm. Under the pale moon a vampires gaze Their love forbidden, a mystical maze."
   const navigate = useNavigate();
 
   const handleNewUserChange = (event) => {
@@ -64,64 +65,78 @@ function Signup() {
   };
 
   return (
-    <div className='bodyDiv'>
+    <div className='bodyDivxyz'>
       <div className="grid1">
-        <div className="box1">
-          <div className="box1box">
-            <div className="box1a"><h1></h1></div>
-            <div className="box1b">Signup</div>  
-            <div className="box1c"><h1></h1></div>
+        <div className="box1xyz">
+          <div className="box1boxxyz">
+            <div className="box1bxyz">Signup</div>  
           </div>
         </div>
-        <div className='box2'>Signup</div>
+        <div className='box2xyz'>
+        <details className='details'>
+      <summary>
+        <em>of interest</em>
+      </summary>
+      <em>{ww}</em>
+    </details>
+        </div>
       </div>  
       <div className="accountGrid">
         <div className="agDiv1"></div>
         <div className="signupDiv1">
-          <button className="signUpButton" onClick={handleGoBack}>Back</button>
+          {/* <button className="signUpButton" onClick={handleGoBack}>Back</button> */}
         </div>
-        <form className="signupForm" onSubmit={handleSubmitSignup}>
+        <form className="signupForm" style={{ width: '20em' }} onSubmit={handleSubmitSignup}>
           <input
             className="signupInput"
+            style={{ width: "55%"}}
             value={newUser.first_name}
             type="text"
             name="first_name"
             placeholder="FIRST NAME"
             onChange={handleNewUserChange}
           />
+          <br/>
           <input
             className="signupInput"
+            style={{ width: "65%"}}
             value={newUser.last_name}
             type="text"
             name="last_name"
             placeholder="LAST NAME"
             onChange={handleNewUserChange}
           />
+          <br/>
           <input
             className="signupInput"
+            style={{ width: "75%"}}
             value={newUser.username}
             type="text"
             name="username"
             placeholder="USERNAME"
             onChange={handleNewUserChange}
           />
+          <br/>
           <input
             className="signupInput"
+            style={{ width: "85%"}}
             value={newUser.password}
             type="password"
             name="password"
             placeholder="PASSWORD"
             onChange={handleNewUserChange}
           />
+          <br/>
           <input
             className="signupInput"
+            style={{ width: "95%"}}
             value={newUser.confirmPassword}
             type="password"
             name="confirmPassword"
             placeholder="REENTER PASSWORD"
             onChange={handleNewUserChange}
           />
-          <button className="signUpButton" type="submit">Sign up</button>
+          <button className="signUpButton" style={{ width: "100%"}} type="submit">Sign up</button>
         </form>
       </div>
     </div>

@@ -111,7 +111,7 @@ function Bloodlogin({ onLogin }) {
           </div>
         </div></div>
         <div className="agDiv2"><div className="agDiv2Sub">
-        <img src={pazuzuTransparentImage} className='accPaz1'/>  
+        {/* <img src={pazuzuTransparentImage} className='accPaz1'/>   */}
         <img src={pazuzuTransparentImage} className='accPaz2'/>  
         </div></div>
       </div>

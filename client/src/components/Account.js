@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../Contexts/AuthContext';
-import pazuzuTransparentImage from "../assets/pazuzuTransparent.png"
+import pazuzuTransparentImage from "../assets/pazuzuTransparent5.png"
+import { useNavigate } from 'react-router-dom';
 
 
 function Account() {
@@ -8,7 +9,8 @@ function Account() {
   const [showNewPasswordInput, setShowNewPasswordInput] = useState(false);
   const [newUsername, setNewUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
-
+  
+  const navigate = useNavigate();
 
   const {
     authUser,
@@ -95,6 +97,29 @@ function Account() {
     }
   };
 
+
+  const deleteAccount = async () => {
+    setTimeout(() => {
+      window.alert("Account deleted")
+      navigate("./goodbye")
+      }, 1300);
+    try {
+      const response = await fetch(`/users/${authUser.id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        // Clear user information and logout
+        setAuthUser(null);
+        setIsLoggedIn(false);
+        // Redirect to the login page or perform any necessary actions
+      } else {
+        console.log('Error deleting account:', response.status);
+      }
+    } catch (error) {
+      console.log('Error deleting account:', error);
+    }
+  };
+
   return (
     <div className='bodyDiv'>
       <div className="grid1">
@@ -146,6 +171,7 @@ function Account() {
                     )}
                   </div>
                   <p><strong>Account Created:</strong> {authUser.created_at}</p>
+                  <button className="accountDeleteButton" onClick={deleteAccount}>Delete Account</button>
                 </div>
             </div>
           </div>

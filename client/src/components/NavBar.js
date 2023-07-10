@@ -22,7 +22,7 @@ function NavBar({ loggedIn, setLoggedIn }) {
           window.confirm('BloodLogged out successfully');
           setIsLoggedIn(false);
           setAuthUser(null);
-          navigate('/bloodlogin');
+          navigate('/Badbye');
         } else {
           console.error('bloodloggedout inadequately.');
         }
@@ -37,12 +37,12 @@ function NavBar({ loggedIn, setLoggedIn }) {
       <ul className="navUl">
         <li className="navLi">
           <NavLink exact to="/tomb"><button className='navTomb'>Tomb</button></NavLink>
-          <NavLink to="/account"><button className='navAccount'>Account</button></NavLink>
-          <NavLink to="/about"><button className='navAbout'>About</button></NavLink>
           <NavLink to="/worblin"><button className='navWorblin'>Worblin</button></NavLink>
-          <NavLink to="/gobxam"><button className='navWorblin'>Gobxam</button></NavLink>
+          {/* <NavLink to="/gobxam"><button className='navWorblin'>Gobxam</button></NavLink> */}
           <NavLink to="/draculanalytics"><button className='navWorblin'>Drac</button></NavLink>
-          <NavLink to="/"><button className='navBloodLogout'onClick={handleLogout}>Bloodlogout</button></NavLink>
+          <NavLink to="/about"><button className='navAbout'>Evil</button></NavLink>
+          <NavLink to="/account"><button className='navAccount'>Crypt</button></NavLink>
+          <NavLink to="/"><button className='navBloodLogout'onClick={handleLogout}>Bloodout</button></NavLink>
         </li>
       </ul>
     </nav>

@@ -1,4 +1,5 @@
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 from config import db
 from datetime import datetime
 from flask_bcrypt import bcrypt
@@ -59,7 +60,11 @@ class UserWorblin(db.Model, SerializerMixin):
        'guesses': self.guesses,
     }   
 
-   
+   @validates('user_worblin')
+   def validate_user_worblin(self, worblin_id):
+       if user_worblin.worblin_id == worblin_id and user_worblin.user_id == self.id:
+           raise ValueError("User has already played this game")
+
 class GobJoke(db.Model, SerializerMixin):
    __tablename__ = 'gobjokes'
    id = db.Column(db.Integer, primary_key=True)
@@ -72,6 +77,17 @@ class GobJoke(db.Model, SerializerMixin):
          'q': self.q,
          'a': self.a
    }
+
+class Dracquote(db.Model, SerializerMixin):
+   __tablename__ = 'dracquotes'
+   id = db.Column(db.Integer, primary_key=True)
+   drac_q = db.Column(db.String)
+
+   def to_dict(self):
+      return {
+         'id': self.id,
+         'drac_q': self.drac_q
+      }
 
 class Letter(db.Model, SerializerMixin):
    __tablename__ = 'letters'
@@ -108,13 +124,13 @@ class UserGobxam(db.Model, SerializerMixin):
    __tablename__ = 'user_gobxams'
    id = db.Column(db.Integer, primary_key=True)
    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-   gobxam_date = db.Column(db.Date, nullable=False)
+   gobxam_day_of_month = db.Column(db.Integer, nullable=False)
    score = db.Column(db.Integer)
 
    def to_dict(self):
       return {
          'id': self.id,
          'user_id': self.user_id,
-         'gobxam_date': self.gobxam_date,
+         'gobxam_day_of_month': self.gobxam_day_of_month,
          'score': self.score
    }

@@ -10,7 +10,10 @@ import Gobxam from './Gobxam';
 import Signup from './Signup';
 import Tomb from './Tomb';
 import Account from './Account';
+import Dracquote from './Dracquote';
 import Draculanalytics from './Draculanalytics';
+import DraculanalyticsII from './DraculanalyticsII';
+import Badbye from './Badbye';
 
 
 function App() {
@@ -40,8 +43,9 @@ function App() {
 
   return (
     <>  
-      <NavBar IsloggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <NavBar IsloggedIn={isLoggedIn} onLogin={onLogin} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
+        <Route path="/badbye" element={<Badbye />} /> 
         <Route path="/" element={isLoggedIn ? <Tomb /> : <Bloodlogin />} />
         <Route path="/bloodlogin" element={isLoggedIn ? ( <Tomb username={isLoggedIn.username} /> ) : <Bloodlogin onLogin={ onLogin } />} />
         <Route path="/signup" element={<Signup />} />
@@ -51,6 +55,8 @@ function App() {
         <Route path="/worblin" element={ isLoggedIn ? ( <Worblin username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/gobxam" element={ isLoggedIn ? ( <Gobxam username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
         <Route path="/draculanalytics" element={ isLoggedIn ? ( <Draculanalytics username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
+        <Route path="/draculanalyticsII" element={ isLoggedIn ? ( <DraculanalyticsII username={isLoggedIn.username} /> ) : ( <Navigate to="/Bloodlogin" /> ) } />
+        <Route path="/dracquote" element={<Dracquote />} /> 
         <Route path="/terror" element={<Terror />} /> 
         <Route path="*" element={<Terror />} />
       </Routes>
